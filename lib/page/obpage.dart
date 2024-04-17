@@ -12,7 +12,17 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   final PageController _mPageController = PageController();
 
-  // final _initPageIndex = 0;
+  int _initPageIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _mPageController.addListener(() {
+      setState(() {
+        _initPageIndex = _mPageController.page!.round();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,24 +43,40 @@ class _OnboardingPageState extends State<OnboardingPage> {
         children: [
           Expanded(
             flex: 5,
-            child: PageView(
-              scrollDirection: Axis.horizontal,
-              controller: _mPageController,
-              children: const [
-                OBDataWidget(
-                    obImage: Constant.ob1Image,
-                    headLineText: Constant.ob1Htext,
-                    subheadlineText: Constant.ob11Htext),
-                OBDataWidget(
-                    obImage: Constant.ob2Image,
-                    headLineText: Constant.ob2Htext,
-                    subheadlineText: Constant.ob22Htext),
-                OBDataWidget(
-                    obImage: Constant.ob3Image,
-                    headLineText: Constant.ob3Htext,
-                    subheadlineText: Constant.ob33Htext),
-              ],
-            ),
+            child: Stack(children: [
+              PageView(
+                onPageChanged: (int index) {
+                  setState(() {
+                    _initPageIndex = index;
+                  });
+                },
+                scrollDirection: Axis.horizontal,
+                controller: _mPageController,
+                children: const [
+                  OBDataWidget(
+                      obImage: Constant.ob1Image,
+                      headLineText: Constant.ob1Htext,
+                      subheadlineText: Constant.ob11Htext),
+                  OBDataWidget(
+                      obImage: Constant.ob2Image,
+                      headLineText: Constant.ob2Htext,
+                      subheadlineText: Constant.ob22Htext),
+                  OBDataWidget(
+                      obImage: Constant.ob3Image,
+                      headLineText: Constant.ob3Htext,
+                      subheadlineText: Constant.ob33Htext),
+                ],
+              ),
+              Positioned(
+                bottom: 10,
+                left: 0,
+                right: 0,
+                child: DotIndicator(
+                  itemCount: 3, // Number of pages
+                  currentIndex: _initPageIndex,
+                ),
+              ),
+            ]),
           ),
           Expanded(
             flex: 2,
@@ -125,6 +151,41 @@ class OBDataWidget extends StatelessWidget {
                   color: Colors.grey,
                   fontWeight: FontWeight.normal)),
         ],
+      ),
+    );
+  }
+}
+
+class DotIndicator extends StatelessWidget {
+  final int itemCount;
+  final int currentIndex;
+  final Color dotColor;
+  final Color activeDotColor;
+
+  const DotIndicator({
+    required this.itemCount,
+    required this.currentIndex,
+    this.dotColor = Colors.grey,
+    this.activeDotColor = Constant.appColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: List.generate(
+        itemCount,
+        (index) => Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Container(
+            width: 10,
+            height: 10,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: index == currentIndex ? activeDotColor : dotColor,
+            ),
+          ),
+        ),
       ),
     );
   }
