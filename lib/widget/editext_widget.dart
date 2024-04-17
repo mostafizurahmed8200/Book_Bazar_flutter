@@ -5,8 +5,15 @@ import '../constant/constant.dart';
 class EditTextWidget extends StatelessWidget {
   final String hintText;
   final IconData? prefixIcon;
+  final bool isEnableSuggestion, isObscureText, isAutocorrect;
 
-  const EditTextWidget({super.key, required this.hintText, this.prefixIcon});
+  const EditTextWidget(
+      {super.key,
+      required this.hintText,
+      this.prefixIcon,
+      required this.isEnableSuggestion,
+      required this.isObscureText,
+      required this.isAutocorrect});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +29,9 @@ class EditTextWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: TextFormField(
-          obscureText: true,
-          enableSuggestions: false,
-          autocorrect: false,
+          obscureText: isObscureText,
+          enableSuggestions: isEnableSuggestion,
+          autocorrect: isAutocorrect,
           decoration: InputDecoration(
             border: InputBorder.none,
             hintText: hintText,

@@ -46,9 +46,12 @@ class _SignupPageState extends State<SignupPage> {
             const SizedBox(
               height: 10,
             ),
-            EditTextWidget(
+            const EditTextWidget(
               hintText: 'Your name',
               prefixIcon: Icons.person,
+              isAutocorrect: false,
+              isEnableSuggestion: true,
+              isObscureText: false,
             ),
             const SizedBox(
               height: 10,
@@ -60,9 +63,12 @@ class _SignupPageState extends State<SignupPage> {
             const SizedBox(
               height: 10,
             ),
-            EditTextWidget(
+            const EditTextWidget(
               hintText: 'Your Email',
               prefixIcon: Icons.email_rounded,
+              isAutocorrect: false,
+              isEnableSuggestion: true,
+              isObscureText: false,
             ),
             const SizedBox(
               height: 10,
@@ -74,9 +80,12 @@ class _SignupPageState extends State<SignupPage> {
             const SizedBox(
               height: 10,
             ),
-            EditTextWidget(
+            const EditTextWidget(
               hintText: 'Your password',
               prefixIcon: Icons.lock_rounded,
+              isAutocorrect: false,
+              isEnableSuggestion: true,
+              isObscureText: true,
             ),
           ],
         ),
