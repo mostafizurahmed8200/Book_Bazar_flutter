@@ -7,16 +7,19 @@ class ButtonWidget extends StatelessWidget {
   final Color textColor;
   final double? width, height;
   final double? fontSize;
+  final FontWeight? fontWeight;
 
-  const ButtonWidget(
-      {super.key,
-      required this.text,
-      required this.roundCorner,
-      required this.backgroundColor,
-      required this.width,
-      this.height = 60,
-      required this.textColor,
-      this.fontSize = 20});
+  const ButtonWidget({
+    super.key,
+    required this.text,
+    required this.roundCorner,
+    required this.backgroundColor,
+    required this.width,
+    this.height = 60,
+    required this.textColor,
+    this.fontSize = 20,
+    this.fontWeight,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,8 @@ class ButtonWidget extends StatelessWidget {
       child: Center(
         child: Text(
           text,
-          style: TextStyle(fontSize: fontSize, color: textColor),
+          style: TextStyle(
+              fontSize: fontSize, color: textColor, fontWeight: fontWeight),
         ),
       ),
     );

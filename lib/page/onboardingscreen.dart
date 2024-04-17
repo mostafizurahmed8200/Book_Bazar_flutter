@@ -87,24 +87,31 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ButtonWidget(
-                    text: 'Continue',
+                    text: 'LOGIN',
                     roundCorner: 10.0,
                     backgroundColor: Constant.appColor,
                     width: kScreenSize.width * .80,
                     // height: 60,
                     textColor: Colors.white,
                     fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  ButtonWidget(
-                    text: 'Sign in',
-                    roundCorner: 10.0,
-                    backgroundColor: Constant.appLightTrnsColor,
-                    width: kScreenSize.width * .80,
-                    // height: 60,
-                    textColor: Constant.appColor,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, 'signuppage');
+                    },
+                    child: ButtonWidget(
+                      text: 'SIGN UP',
+                      roundCorner: 10.0,
+                      backgroundColor: Constant.appLightTrnsColor,
+                      width: kScreenSize.width * .80,
+                      // height: 60,
+                      textColor: Constant.appColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(
                     height: 20,
