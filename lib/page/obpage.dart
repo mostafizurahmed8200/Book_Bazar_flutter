@@ -18,6 +18,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     final kScreenSize = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        title: const Padding(
+          padding: EdgeInsets.all(
+            30.0,
+          ),
+          child: Text(
+            'Skip',
+            style: TextStyle(fontSize: 18, color: Constant.appColor),
+          ),
+        ),
+      ),
       body: Column(
         children: [
           Expanded(
