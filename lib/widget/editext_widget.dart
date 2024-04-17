@@ -6,6 +6,7 @@ class EditTextWidget extends StatelessWidget {
   final String hintText;
   final IconData? prefixIcon;
   final bool isEnableSuggestion, isObscureText, isAutocorrect;
+  final int? maxLength;
 
   const EditTextWidget(
       {super.key,
@@ -13,7 +14,8 @@ class EditTextWidget extends StatelessWidget {
       this.prefixIcon,
       required this.isEnableSuggestion,
       required this.isObscureText,
-      required this.isAutocorrect});
+      required this.isAutocorrect,
+      this.maxLength});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,9 @@ class EditTextWidget extends StatelessWidget {
           obscureText: isObscureText,
           enableSuggestions: isEnableSuggestion,
           autocorrect: isAutocorrect,
+          maxLength: maxLength,
           decoration: InputDecoration(
+            counterText: "",
             border: InputBorder.none,
             hintText: hintText,
             hintStyle: const TextStyle(color: Colors.grey),

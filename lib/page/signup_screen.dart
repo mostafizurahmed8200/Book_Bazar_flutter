@@ -86,6 +86,7 @@ class _SignupPageState extends State<SignupPage> {
               isAutocorrect: false,
               isEnableSuggestion: true,
               isObscureText: true,
+              maxLength: 10,
             ),
           ],
         ),
