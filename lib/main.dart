@@ -1,4 +1,4 @@
-import 'package:book_bazar/page/obpage.dart';
+import 'package:book_bazar/page/onboardingscreen.dart';
 import 'package:book_bazar/page/splashscreen.dart';
 import 'package:flutter/material.dart';
 

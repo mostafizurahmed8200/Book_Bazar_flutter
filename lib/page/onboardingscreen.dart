@@ -119,6 +119,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   }
 }
 
+//OB Data Class
 class OBDataWidget extends StatelessWidget {
   final String obImage;
   final String headLineText;
@@ -156,6 +157,7 @@ class OBDataWidget extends StatelessWidget {
   }
 }
 
+//Dot Indicator Class
 class DotIndicator extends StatelessWidget {
   final int itemCount;
   final int currentIndex;
@@ -163,6 +165,7 @@ class DotIndicator extends StatelessWidget {
   final Color activeDotColor;
 
   const DotIndicator({
+    super.key,
     required this.itemCount,
     required this.currentIndex,
     this.dotColor = Colors.grey,
