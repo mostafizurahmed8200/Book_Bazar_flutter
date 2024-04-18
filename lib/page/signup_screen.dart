@@ -12,13 +12,17 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  TextEditingController controllerPassword = TextEditingController();
+  TextEditingController controllerName = TextEditingController();
   TextEditingController controllerEmail = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
+
+  String getName = '';
+  String getEmailText = ''; //Email Text
+  String getPassword = '';
+
   String getPasswordText8 = '';
   String getPasswordTextAtleast1number = '';
   String getPasswordTextAtleastLowercase = '';
-
-  String getEmailText = ''; //Email Text
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +64,16 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(
                 height: 10,
               ),
-              const EditTextWidget(
+              EditTextWidget(
                 hintText: 'Your name',
                 prefixIcon: Icons.person,
                 isAutocorrect: false,
                 isEnableSuggestion: true,
                 isObscureText: false,
+                controller: controllerName,
+                onChanged: (String value) {
+                  getName = controllerName.text;
+                },
               ),
               const SizedBox(
                 height: 10,
@@ -110,6 +118,7 @@ class _SignupPageState extends State<SignupPage> {
                 controller: controllerPassword,
                 onChanged: (String value) {
                   setState(() {
+                    getPassword = controllerPassword.text;
                     getPasswordText8 = controllerPassword.text;
                     getPasswordTextAtleast1number = controllerPassword.text;
                     getPasswordTextAtleastLowercase = controllerPassword.text;
@@ -122,6 +131,29 @@ class _SignupPageState extends State<SignupPage> {
               ),
               Column(
                 children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Expression.containsNumber(getPasswordTextAtleast1number)
+                            ? Icons.done_all
+                            : Icons.done,
+                        color: Expression.containsNumber(
+                                getPasswordTextAtleast1number)
+                            ? Colors.green
+                            : Colors.grey,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Text(
+                        'Atleast 1 number (1-9)',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     children: [
                       (getPasswordText8.toString().length == 8)
@@ -148,34 +180,11 @@ class _SignupPageState extends State<SignupPage> {
                   Row(
                     children: [
                       Icon(
-                        Expression.containsNumber(getPasswordTextAtleast1number)
-                            ? Icons.done_all
-                            : Icons.done,
-                        color: Expression.containsNumber(
-                                getPasswordTextAtleast1number)
-                            ? Colors.green
-                            : Colors.grey,
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Text(
-                        'Atleast 1 number (1-9)',
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
-                      Icon(
-                        Expression.containsLowerCase(
+                        Expression.containsLowerUpperCase(
                                 getPasswordTextAtleast1number)
                             ? Icons.done_all
                             : Icons.done,
-                        color: Expression.containsLowerCase(
+                        color: Expression.containsLowerUpperCase(
                                 getPasswordTextAtleast1number)
                             ? Colors.green
                             : Colors.grey,
@@ -202,10 +211,15 @@ class _SignupPageState extends State<SignupPage> {
                 width: MediaQuery.of(context).size.width * .90,
                 textColor: Colors.white,
                 onCLickButton: () {
-                  if (!Expression.containsAtEmailSymbol(getEmailText)) {
-                    print("Please Enter valid Email Address");
-                  } else {
-                    print("Pass");
+                  if (isValidation(
+                    getName,
+                    getEmailText,
+                    getPassword,
+                    getPasswordTextAtleast1number,
+                    getPasswordTextAtleastLowercase,
+                    getPasswordText8,
+                  )) {
+                    print('Successfully Register');
                   }
                 },
               ),
@@ -252,5 +266,39 @@ class _SignupPageState extends State<SignupPage> {
         ),
       ),
     );
+  }
+
+  bool isValidation(
+    String name,
+    String emailText,
+    String passwordText,
+    String atleast1number,
+    String atleasetLowerUperCase,
+    String minimum8digit,
+  ) {
+    if (name.isEmpty) {
+      print("Please Enter Your name");
+      return false;
+    } else if (emailText.isEmpty) {
+      print("Please Enter Email Address");
+      return false;
+    } else if (!Expression.containsAtEmailSymbol(emailText)) {
+      print("Please Enter valid Email Address");
+      return false;
+    } else if (passwordText.isEmpty) {
+      print("Please Create Password");
+      return false;
+    } else if (!Expression.containsNumber(atleast1number)) {
+      print("Please Enter At least one number for password");
+      return false;
+    } else if (!Expression.containsLowerUpperCase(atleasetLowerUperCase)) {
+      print(
+          "Please Enter At least one lowercase and uppercase number for password");
+      return false;
+    } else if (minimum8digit.length != 8) {
+      print("Please Enter 8 Characters");
+      return false;
+    }
+    return true;
   }
 }

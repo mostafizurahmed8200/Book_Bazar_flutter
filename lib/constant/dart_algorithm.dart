@@ -6,7 +6,7 @@ class Expression {
   }
 
   //Check atleast lowercase
-  static bool containsLowerCase(String value) {
+  static bool containsLowerUpperCase(String value) {
     RegExp regExp = RegExp(r'[a-z]');
     RegExp regExpUpperCase = RegExp(r'[A-Z]');
     return regExp.hasMatch(value) && regExpUpperCase.hasMatch(value);
