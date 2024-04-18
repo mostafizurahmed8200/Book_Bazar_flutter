@@ -219,7 +219,22 @@ class _SignupPageState extends State<SignupPage> {
                     getPasswordTextAtleastLowercase,
                     getPasswordText8,
                   )) {
-                    print('Successfully Register');
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return const AlertDialog(
+                          content: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            child: CircularProgressIndicator(
+                              color: Colors.red,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                    Future.delayed(const Duration(seconds: 2), () {
+                      Navigator.of(context).pop();
+                    });
                   }
                 },
               ),
