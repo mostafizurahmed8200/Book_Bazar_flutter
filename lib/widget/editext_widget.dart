@@ -7,6 +7,8 @@ class EditTextWidget extends StatelessWidget {
   final IconData? prefixIcon;
   final bool isEnableSuggestion, isObscureText, isAutocorrect;
   final int? maxLength;
+  final ValueChanged<String>? onChanged;
+  final TextEditingController? controller;
 
   const EditTextWidget(
       {super.key,
@@ -15,10 +17,14 @@ class EditTextWidget extends StatelessWidget {
       required this.isEnableSuggestion,
       required this.isObscureText,
       required this.isAutocorrect,
-      this.maxLength});
+      this.maxLength,
+      this.onChanged,
+      this.controller});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController _controller =
+        controller ?? TextEditingController();
     return Container(
       height: 50,
       width: MediaQuery.of(context).size.width * .90,
@@ -28,8 +34,7 @@ class EditTextWidget extends StatelessWidget {
           Radius.circular(10),
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+      child: Center(
         child: TextFormField(
           obscureText: isObscureText,
           enableSuggestions: isEnableSuggestion,
@@ -45,6 +50,8 @@ class EditTextWidget extends StatelessWidget {
               color: Colors.grey,
             ),
           ),
+          onChanged: onChanged,
+          controller: _controller,
         ),
       ),
     );
