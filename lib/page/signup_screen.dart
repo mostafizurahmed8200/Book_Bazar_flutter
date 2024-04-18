@@ -235,14 +235,18 @@ class _SignupPageState extends State<SignupPage> {
                       },
                     );
 
-                    FireAuth.registerUsingEmailPassword(
-                        name: controllerName.text,
-                        email: controllerEmail.text,
-                        password: controllerPassword.text);
+                    Future.delayed(
+                      const Duration(seconds: 5),
+                      () {
+                        Navigator.of(context).pop();
+                        FireAuth.registerUsingEmailPassword(context,
+                            name: controllerName.text,
+                            email: controllerEmail.text,
+                            password: controllerPassword.text);
 
-                    Future.delayed(const Duration(seconds: 5), () {
-                      Navigator.of(context).pop();
-                    });
+                        Navigator.pushNamed(context, 'congratulationspage');
+                      },
+                    );
                   }
                 },
               ),

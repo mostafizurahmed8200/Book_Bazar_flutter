@@ -1,7 +1,10 @@
+import 'package:book_bazar/constant/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 
 class FireAuth {
-  static Future<User?> registerUsingEmailPassword({
+  static Future<User?> registerUsingEmailPassword(
+    BuildContext context, {
     required String name,
     required String email,
     required String password,
@@ -18,9 +21,9 @@ class FireAuth {
       await user.reload();
       user = auth.currentUser;
     } on FirebaseAuthException catch (e) {
-      print('FirebaseAuthException: ${e.message}');
+      Utils.dialogUtils(context, 'FirebaseAuthException: ${e.message}');
     } catch (e) {
-      print('Error: $e');
+      Utils.dialogUtils(context, 'Error');
     }
     return user;
   }

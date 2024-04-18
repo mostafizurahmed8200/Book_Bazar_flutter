@@ -8,6 +8,8 @@ class Constant {
   static const ob2Image = 'image/ob2.png';
   static const ob3Image = 'image/ob3.png';
 
+  static const congratulationsIcon = 'image/congratulation.png';
+
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
   static const Color appLightTrnsColor = Color(0xFFF3F3F3);
@@ -27,7 +29,9 @@ class Constant {
       "Ready to embark on a quest for inspiration and knowledge? Your adventure begins now. Let's go!";
 
   static const signup = 'Sign up';
+  static const welcomeback = 'Welcome Back 👋';
   static const createAcHint = 'Create account and choose favorite menu';
+  static const welcomebackHint = 'Sign to your account';
 
 //Text Style Section
 
