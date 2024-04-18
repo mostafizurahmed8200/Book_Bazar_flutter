@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Add your Firebase configuration values here -->
+    <string name="google_app_id">1:243384025484:android:9bcb31c5d7fd42350e56a9</string>
+    <string name="google_api_key">AIzaSyDT-sZRyjItso1LnWKHnekjlVTWW-YsPZ8</string>
+    <string name="firebase_database_url">https://book-bazzar-47153.firebaseio.com</string>
+    <string name="gcm_defaultSenderId">243384025484</string>
+    <string name="project_id">book-bazzar-47153</string>
+    <string name="google_storage_bucket">book-bazzar-47153.appspot.com</string>
+</resources>

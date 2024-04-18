@@ -16,10 +16,10 @@ class Utils {
             builder: (context) {
               // Get available height and width of the build area of this widget. Make a choice depending on the size.
               // var height = MediaQuery.of(context).size.height;
-              // var width = MediaQuery.of(context).size.width;
+              //var width = MediaQuery.of(context).size.width * .65;
 
               return SizedBox(
-                height: 100,
+                height: 150,
                 child: Column(
                   children: [
                     Text(

@@ -1,6 +1,7 @@
 import 'package:book_bazar/constant/constant.dart';
 import 'package:book_bazar/constant/dart_algorithm.dart';
 import 'package:book_bazar/constant/utils.dart';
+import 'package:book_bazar/domain/firebase/firebase_auth.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
 import 'package:flutter/material.dart';
@@ -123,7 +124,6 @@ class _SignupPageState extends State<SignupPage> {
                     getPasswordText8 = controllerPassword.text;
                     getPasswordTextAtleast1number = controllerPassword.text;
                     getPasswordTextAtleastLowercase = controllerPassword.text;
-                    print('getText ${controllerPassword.text}');
                   });
                 },
               ),
@@ -157,29 +157,6 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                   Row(
                     children: [
-                      (getPasswordText8.toString().length == 8)
-                          ? const Icon(
-                              Icons.done_all,
-                              color: Colors.green,
-                            )
-                          : const Icon(
-                              Icons.done,
-                              color: Colors.grey,
-                            ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Text(
-                        'Minimum 8 characters',
-                        style: TextStyle(color: Colors.grey),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    children: [
                       Icon(
                         Expression.containsLowerUpperCase(
                                 getPasswordTextAtleast1number)
@@ -195,6 +172,29 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       const Text(
                         'Atleast lowercase or uppercase letters',
+                        style: TextStyle(color: Colors.grey),
+                      )
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    children: [
+                      (getPasswordText8.toString().length == 8)
+                          ? const Icon(
+                              Icons.done_all,
+                              color: Colors.green,
+                            )
+                          : const Icon(
+                              Icons.done,
+                              color: Colors.grey,
+                            ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Text(
+                        'Minimum 8 characters',
                         style: TextStyle(color: Colors.grey),
                       )
                     ],
@@ -234,7 +234,13 @@ class _SignupPageState extends State<SignupPage> {
                         );
                       },
                     );
-                    Future.delayed(const Duration(seconds: 2), () {
+
+                    FireAuth.registerUsingEmailPassword(
+                        name: controllerName.text,
+                        email: controllerEmail.text,
+                        password: controllerPassword.text);
+
+                    Future.delayed(const Duration(seconds: 5), () {
                       Navigator.of(context).pop();
                     });
                   }
@@ -295,27 +301,27 @@ class _SignupPageState extends State<SignupPage> {
     String minimum8digit,
   ) {
     if (name.isEmpty) {
-      Utils.dialogUtils(context, "Please Enter Your name");
+      Utils.dialogUtils(context, "Please enter Your name");
       return false;
     } else if (emailText.isEmpty) {
-      Utils.dialogUtils(context, "Please Enter Email Address");
+      Utils.dialogUtils(context, "Please enter Email Address");
       return false;
     } else if (!Expression.containsAtEmailSymbol(emailText)) {
-      Utils.dialogUtils(context, "Please Enter valid Email Address");
+      Utils.dialogUtils(context, "Please enter valid Email Address");
       return false;
     } else if (passwordText.isEmpty) {
       Utils.dialogUtils(context, "Please Create Password");
       return false;
     } else if (!Expression.containsNumber(atleast1number)) {
       Utils.dialogUtils(
-          context, "Please Enter At least one number for password");
+          context, "Please enter At least one number type for password");
       return false;
     } else if (!Expression.containsLowerUpperCase(atleasetLowerUperCase)) {
       Utils.dialogUtils(context,
-          "Please Enter At least one lowercase and uppercase number for password");
+          "Please enter At least one lowercase and uppercase number for password");
       return false;
     } else if (minimum8digit.length != 8) {
-      Utils.dialogUtils(context, "Please Enter 8 Characters");
+      Utils.dialogUtils(context, "Please enter 8 Characters");
       return false;
     }
     return true;
