@@ -12,10 +12,13 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
-  TextEditingController controller = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
+  TextEditingController controllerEmail = TextEditingController();
   String getPasswordText8 = '';
   String getPasswordTextAtleast1number = '';
   String getPasswordTextAtleastLowercase = '';
+
+  String getEmailText = ''; //Email Text
 
   @override
   Widget build(BuildContext context) {
@@ -74,12 +77,18 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(
                 height: 10,
               ),
-              const EditTextWidget(
+              EditTextWidget(
                 hintText: 'Your Email',
                 prefixIcon: Icons.email_rounded,
                 isAutocorrect: false,
                 isEnableSuggestion: true,
                 isObscureText: false,
+                controller: controllerEmail,
+                onChanged: (String value) {
+                  setState(() {
+                    getEmailText = controllerEmail.text.toString();
+                  });
+                },
               ),
               const SizedBox(
                 height: 10,
@@ -98,13 +107,13 @@ class _SignupPageState extends State<SignupPage> {
                 isEnableSuggestion: true,
                 isObscureText: true,
                 maxLength: 8,
-                controller: controller,
+                controller: controllerPassword,
                 onChanged: (String value) {
                   setState(() {
-                    getPasswordText8 = controller.text;
-                    getPasswordTextAtleast1number = controller.text;
-                    getPasswordTextAtleastLowercase = controller.text;
-                    print('getText ${controller.text}');
+                    getPasswordText8 = controllerPassword.text;
+                    getPasswordTextAtleast1number = controllerPassword.text;
+                    getPasswordTextAtleastLowercase = controllerPassword.text;
+                    print('getText ${controllerPassword.text}');
                   });
                 },
               ),
@@ -186,12 +195,20 @@ class _SignupPageState extends State<SignupPage> {
                 height: 20,
               ),
               ButtonWidget(
-                  text: 'Register',
-                  roundCorner: 50,
-                  height: 50,
-                  backgroundColor: Constant.appColor,
-                  width: MediaQuery.of(context).size.width * .90,
-                  textColor: Colors.white),
+                text: 'Register',
+                roundCorner: 50,
+                height: 50,
+                backgroundColor: Constant.appColor,
+                width: MediaQuery.of(context).size.width * .90,
+                textColor: Colors.white,
+                onCLickButton: () {
+                  if (!Expression.containsAtEmailSymbol(getEmailText)) {
+                    print("Please Enter valid Email Address");
+                  } else {
+                    print("Pass");
+                  }
+                },
+              ),
               const SizedBox(
                 height: 20,
               ),

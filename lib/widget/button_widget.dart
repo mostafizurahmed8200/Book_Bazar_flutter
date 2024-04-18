@@ -8,6 +8,7 @@ class ButtonWidget extends StatelessWidget {
   final double? width, height;
   final double? fontSize;
   final FontWeight? fontWeight;
+  final Function? onCLickButton;
 
   const ButtonWidget({
     super.key,
@@ -19,24 +20,32 @@ class ButtonWidget extends StatelessWidget {
     required this.textColor,
     this.fontSize = 20,
     this.fontWeight,
+    this.onCLickButton,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-        color: backgroundColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(roundCorner),
+    return GestureDetector(
+      onTap: () {
+        if (onCLickButton != null) {
+          onCLickButton!(); // Invoke the function if it's not null
+        }
+      },
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: backgroundColor,
+          borderRadius: BorderRadius.all(
+            Radius.circular(roundCorner),
+          ),
         ),
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: TextStyle(
-              fontSize: fontSize, color: textColor, fontWeight: fontWeight),
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+                fontSize: fontSize, color: textColor, fontWeight: fontWeight),
+          ),
         ),
       ),
     );

@@ -99,19 +99,17 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  GestureDetector(
-                    onTap: () {
+                  ButtonWidget(
+                    onCLickButton: () {
                       Navigator.pushNamed(context, 'signuppage');
                     },
-                    child: ButtonWidget(
-                      text: 'SIGN UP',
-                      roundCorner: 10.0,
-                      backgroundColor: Constant.appLightTrnsColor,
-                      width: kScreenSize.width * .80,
-                      // height: 60,
-                      textColor: Constant.appColor,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    text: 'SIGN UP',
+                    roundCorner: 10.0,
+                    backgroundColor: Constant.appLightTrnsColor,
+                    width: kScreenSize.width * .80,
+                    // height: 60,
+                    textColor: Constant.appColor,
+                    fontWeight: FontWeight.bold,
                   ),
                   const SizedBox(
                     height: 20,

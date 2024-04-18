@@ -11,4 +11,9 @@ class Expression {
     RegExp regExpUpperCase = RegExp(r'[A-Z]');
     return regExp.hasMatch(value) && regExpUpperCase.hasMatch(value);
   }
+
+  //Check Email Exp @
+  static bool containsAtEmailSymbol(String value) {
+    return value.contains('@');
+  }
 }
