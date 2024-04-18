@@ -1,5 +1,6 @@
 import 'package:book_bazar/constant/constant.dart';
 import 'package:book_bazar/constant/dart_algorithm.dart';
+import 'package:book_bazar/constant/utils.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
 import 'package:flutter/material.dart';
@@ -212,6 +213,7 @@ class _SignupPageState extends State<SignupPage> {
                 textColor: Colors.white,
                 onCLickButton: () {
                   if (isValidation(
+                    context,
                     getName,
                     getEmailText,
                     getPassword,
@@ -284,6 +286,7 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   bool isValidation(
+    BuildContext context,
     String name,
     String emailText,
     String passwordText,
@@ -292,26 +295,27 @@ class _SignupPageState extends State<SignupPage> {
     String minimum8digit,
   ) {
     if (name.isEmpty) {
-      print("Please Enter Your name");
+      Utils.dialogUtils(context, "Please Enter Your name");
       return false;
     } else if (emailText.isEmpty) {
-      print("Please Enter Email Address");
+      Utils.dialogUtils(context, "Please Enter Email Address");
       return false;
     } else if (!Expression.containsAtEmailSymbol(emailText)) {
-      print("Please Enter valid Email Address");
+      Utils.dialogUtils(context, "Please Enter valid Email Address");
       return false;
     } else if (passwordText.isEmpty) {
-      print("Please Create Password");
+      Utils.dialogUtils(context, "Please Create Password");
       return false;
     } else if (!Expression.containsNumber(atleast1number)) {
-      print("Please Enter At least one number for password");
+      Utils.dialogUtils(
+          context, "Please Enter At least one number for password");
       return false;
     } else if (!Expression.containsLowerUpperCase(atleasetLowerUperCase)) {
-      print(
+      Utils.dialogUtils(context,
           "Please Enter At least one lowercase and uppercase number for password");
       return false;
     } else if (minimum8digit.length != 8) {
-      print("Please Enter 8 Characters");
+      Utils.dialogUtils(context, "Please Enter 8 Characters");
       return false;
     }
     return true;

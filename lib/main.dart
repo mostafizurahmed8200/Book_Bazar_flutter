@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
         home: const SplashScreen(),
         theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
-            appBarTheme: const AppBarTheme(color: Colors.white)),
+            appBarTheme: const AppBarTheme(color: Colors.white),
+            dialogTheme: DialogTheme(backgroundColor: Colors.white)),
         routes: {
           'obpage': (context) => const OnboardingPage(),
           'signuppage': (context) => const SignupPage(),
