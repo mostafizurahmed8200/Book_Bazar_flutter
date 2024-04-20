@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../constant/constant.dart';
+import '../../widget/appbar_widget.dart';
+
 class BottomNavigationProfile extends StatefulWidget {
   const BottomNavigationProfile({super.key});
 
@@ -11,6 +14,13 @@ class BottomNavigationProfile extends StatefulWidget {
 class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: AppBarWidget(
+          title: Constant.profile,
+        ),
+      ),
+    );
   }
 }

@@ -20,6 +20,9 @@ class Constant {
   static const cartIcon = 'image/btm_cart.svg';
   static const profileIcon = 'image/btm_profile.svg';
 
+  static const emptyCartIcon = 'image/empty_cart.svg';
+  static const emptyNotification = 'image/empty_notification.svg';
+
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
   static const Color appLightTrnsColor = Color(0xFFF3F3F3);
