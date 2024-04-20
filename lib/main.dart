@@ -1,3 +1,4 @@
+import 'package:book_bazar/database/db_helper.dart';
 import 'package:book_bazar/page/congratulation_screen.dart';
 import 'package:book_bazar/page/login_screen.dart';
 import 'package:book_bazar/page/notification_screen.dart';
@@ -13,19 +14,28 @@ import 'page/home_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  String loginFlag = await DBHelper.getLoginFlag();
+
   runApp(
-    const MyApp(),
+    MyApp(
+      loginFlag: loginFlag,
+    ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  String loginFlag;
+
+  MyApp({super.key, required this.loginFlag});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+        home: (loginFlag == 'LoggedIn')
+            ? const HomeScreenPage()
+            : const SplashScreen(),
         theme: ThemeData(
             scaffoldBackgroundColor: Colors.white,
             appBarTheme: const AppBarTheme(color: Colors.white),

@@ -1,5 +1,7 @@
+import 'package:book_bazar/database/db_helper.dart';
 import 'package:book_bazar/domain/firebase/firebase_loginauth.dart';
 import 'package:book_bazar/domain/google/google_login.dart';
+import 'package:book_bazar/model/salad_basket_sql.dart';
 import 'package:book_bazar/widget/button_stroke_widget.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
@@ -124,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                   backgroundColor: Constant.appColor,
                   width: MediaQuery.of(context).size.width * .90,
                   textColor: Colors.white,
-                  onCLickButton: () {
+                  onCLickButton: () async {
                     if (isValidation(
                       context,
                       getEmailText,
@@ -153,6 +155,8 @@ class _LoginPageState extends State<LoginPage> {
                               password: controllerPassword.text);
                         },
                       );
+                      final loginFlag = LoginSqlModel(loginFlag: 'LoggedIn');
+                      await DBHelper.insertSaladTable(loginFlag);
                     }
                   },
                 ),
@@ -212,7 +216,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                   width: MediaQuery.of(context).size.width * .90,
                   textColor: Colors.black,
-                  onCLickButton: () {
+                  onCLickButton: () async {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -234,6 +238,9 @@ class _LoginPageState extends State<LoginPage> {
                         GoogleLogin.googleSignIn(context, googleSignIn);
                       },
                     );
+
+                    final loginFlag = LoginSqlModel(loginFlag: 'LoggedIn');
+                    await DBHelper.insertSaladTable(loginFlag);
                   },
                 ),
                 const SizedBox(
