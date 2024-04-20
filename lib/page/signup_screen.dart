@@ -181,7 +181,7 @@ class _SignupPageState extends State<SignupPage> {
                   ),
                   Row(
                     children: [
-                      (getPasswordText8.toString().length == 8)
+                      (getPasswordText8.toString().length >= 8)
                           ? const Icon(
                               Icons.done_all,
                               color: Colors.green,
@@ -327,7 +327,7 @@ class _SignupPageState extends State<SignupPage> {
       Utils.dialogUtils(context,
           "Please enter At least one lowercase and uppercase number for password");
       return false;
-    } else if (minimum8digit.length != 8) {
+    } else if (minimum8digit.length < 8) {
       Utils.dialogUtils(context, "Please enter 8 Characters");
       return false;
     }

@@ -19,21 +19,27 @@ class FireAuth {
         password: password,
       );
 
-      DatabaseReference usersRef =
-          FirebaseDatabase.instance.reference().child('users');
+      DatabaseReference userRef = FirebaseDatabase.instance.ref('users');
 
       user = userCredential.user;
       await user!.updateProfile(displayName: name);
       await user.reload();
       user = auth.currentUser;
 
-      if (userCredential.user != null) {
-        await usersRef.child(userCredential.user!.uid).set({
+      await userRef.push().set(
+        {
+          'uid': userCredential.user!.uid,
           'name': name,
           'email': email,
-          // 'password': password, // Store the encoded password
-        });
-      }
+          'password': password, // Store the encoded password
+        },
+      );
+
+      print("Credential--->"
+          'name $name \n Email $email \n password $password');
+
+      print("Credential--->"
+          'name $name \n Email $email \n password $password');
     } on FirebaseAuthException catch (e) {
       Utils.dialogUtils(context, 'FirebaseAuthException: ${e.message}');
     } catch (e) {
