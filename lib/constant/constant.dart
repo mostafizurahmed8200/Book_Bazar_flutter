@@ -24,11 +24,18 @@ class Constant {
   static const emptyCartIcon = 'image/empty_cart.svg';
   static const emptyNotification = 'image/empty_notification.svg';
 
+  static const slideImg1 = 'image/slideImage1.png';
+  static const slideImg2 = 'image/slideImage2.jpg';
+  static const slideImg3 = 'image/slideImage3.jpeg';
+  static const slideImg4 = 'image/slideImage4.jpeg';
+  static const slideImg5 = 'image/slideImage5.jpeg';
+
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
   static const Color appLightTrnsColor = Color(0xFFF3F3F3);
   static const Color grey50 = Color(0xFFFAFAFA);
   static const Color grey500 = Color(0xFFA6A6A6);
+  static const Color grey60 = Color.fromARGB(255, 242, 242, 247);
 
   //Text Section--
 
@@ -64,6 +71,15 @@ class Constant {
   static const seeAll = 'See all';
   static const notification = 'Notification';
 
+  static const specialOffer = 'Special Offer';
+  static const discount25 = 'Discount 25 %';
+  static const discount30 = 'Discount 30 %';
+  static const discount10 = 'Discount 10 %';
+  static const discount45 = 'Discount 45 %';
+  static const discount50 = 'Discount 50 %';
+
+  static const orderNow = 'Order Now';
+
 //Text Style Section
   static TextStyle headerTextStyle = const TextStyle(
       fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold);
@@ -78,4 +94,15 @@ class Constant {
 
   static TextStyle normalTextStyle = const TextStyle(
       fontSize: 17, color: Colors.black, fontWeight: FontWeight.bold);
+
+  static TextStyle slider1TextStyle = const TextStyle(
+      fontSize: 23, color: Colors.black, fontWeight: FontWeight.bold);
+
+  static TextStyle slider2TextStyle = const TextStyle(
+      fontSize: 16, color: grey500, fontWeight: FontWeight.bold);
+
+  static TextStyle seeAllTextStyle = const TextStyle(
+      fontSize: 20, color: appColor, fontWeight: FontWeight.bold);
+
+  static const double appbarSize = 60.0;
 }

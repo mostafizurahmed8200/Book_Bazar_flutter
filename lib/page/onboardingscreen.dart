@@ -2,6 +2,8 @@ import 'package:book_bazar/constant/constant.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../widget/dot_indicator.dart';
+
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
 
@@ -43,40 +45,44 @@ class _OnboardingPageState extends State<OnboardingPage> {
         children: [
           Expanded(
             flex: 5,
-            child: Stack(children: [
-              PageView(
-                onPageChanged: (int index) {
-                  setState(() {
-                    _initPageIndex = index;
-                  });
-                },
-                scrollDirection: Axis.horizontal,
-                controller: _mPageController,
-                children: const [
-                  OBDataWidget(
-                      obImage: Constant.ob1Image,
-                      headLineText: Constant.ob1Htext,
-                      subheadlineText: Constant.ob11Htext),
-                  OBDataWidget(
-                      obImage: Constant.ob2Image,
-                      headLineText: Constant.ob2Htext,
-                      subheadlineText: Constant.ob22Htext),
-                  OBDataWidget(
-                      obImage: Constant.ob3Image,
-                      headLineText: Constant.ob3Htext,
-                      subheadlineText: Constant.ob33Htext),
-                ],
-              ),
-              Positioned(
-                bottom: 10,
-                left: 0,
-                right: 0,
-                child: DotIndicator(
-                  itemCount: 3, // Number of pages
-                  currentIndex: _initPageIndex,
+            child: Stack(
+              children: [
+                PageView(
+                  onPageChanged: (int index) {
+                    setState(() {
+                      _initPageIndex = index;
+                    });
+                  },
+                  scrollDirection: Axis.horizontal,
+                  controller: _mPageController,
+                  children: const [
+                    OBDataWidget(
+                        obImage: Constant.ob1Image,
+                        headLineText: Constant.ob1Htext,
+                        subheadlineText: Constant.ob11Htext),
+                    OBDataWidget(
+                        obImage: Constant.ob2Image,
+                        headLineText: Constant.ob2Htext,
+                        subheadlineText: Constant.ob22Htext),
+                    OBDataWidget(
+                        obImage: Constant.ob3Image,
+                        headLineText: Constant.ob3Htext,
+                        subheadlineText: Constant.ob33Htext),
+                  ],
                 ),
-              ),
-            ]),
+                Positioned(
+                  bottom: 10,
+                  left: 0,
+                  right: 0,
+                  child: DotIndicator(
+                    width: 10,
+                    height: 10,
+                    itemCount: 3, // Number of pages
+                    currentIndex: _initPageIndex,
+                  ),
+                ),
+              ],
+            ),
           ),
           Expanded(
             flex: 2,
@@ -160,43 +166,6 @@ class OBDataWidget extends StatelessWidget {
                   color: Colors.grey,
                   fontWeight: FontWeight.normal)),
         ],
-      ),
-    );
-  }
-}
-
-//Dot Indicator Class
-class DotIndicator extends StatelessWidget {
-  final int itemCount;
-  final int currentIndex;
-  final Color dotColor;
-  final Color activeDotColor;
-
-  const DotIndicator({
-    super.key,
-    required this.itemCount,
-    required this.currentIndex,
-    this.dotColor = Colors.grey,
-    this.activeDotColor = Constant.appColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: List.generate(
-        itemCount,
-        (index) => Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: Container(
-            width: 10,
-            height: 10,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: index == currentIndex ? activeDotColor : dotColor,
-            ),
-          ),
-        ),
       ),
     );
   }
