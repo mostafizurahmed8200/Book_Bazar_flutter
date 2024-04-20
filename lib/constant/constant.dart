@@ -14,11 +14,12 @@ class Constant {
 
   //Home Screen Icon
   static const homeIcon = 'image/btm_home.svg';
-  static const notificationIcon = 'image/appbar_notif.png';
+  static const notificationIcon = 'image/appbar_notification.svg';
   static const categoryIcon = 'image/btm_category.svg';
-  static const searchIcon = 'image/appbar_search.png';
+  static const searchIcon = 'image/appbar_search.svg';
   static const cartIcon = 'image/btm_cart.svg';
   static const profileIcon = 'image/btm_profile.svg';
+  static const arrowBackIcon = 'image/arrow_back.svg';
 
   static const emptyCartIcon = 'image/empty_cart.svg';
   static const emptyNotification = 'image/empty_notification.svg';
@@ -61,10 +62,14 @@ class Constant {
   static const bestVendor = 'Best Vendors';
   static const authors = 'Authors';
   static const seeAll = 'See all';
+  static const notification = 'Notification';
 
 //Text Style Section
   static TextStyle headerTextStyle = const TextStyle(
       fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold);
+
+  static TextStyle header2TextStyle = const TextStyle(
+      fontSize: 30, color: grey500, fontWeight: FontWeight.bold);
 
   static TextStyle subHeaderTextStyle = const TextStyle(
     fontSize: 15,

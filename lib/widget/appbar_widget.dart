@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constant/constant.dart';
 
@@ -25,7 +26,7 @@ class AppBarWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 if (leadingIcon != null)
-                  Image.asset(
+                  SvgPicture.asset(
                     leadingIcon!,
                     width: 25,
                     height: 25,
@@ -42,11 +43,14 @@ class AppBarWidget extends StatelessWidget {
                     ),
                   ),
                 if (actionIcon != null)
-                  Image.asset(
-                    actionIcon!,
-                    width: 25,
-                    height: 25,
-                    color: Colors.black54,
+                  GestureDetector(
+                    onTap: () {},
+                    child: SvgPicture.asset(
+                      actionIcon!,
+                      width: 25,
+                      height: 25,
+                      color: Colors.black54,
+                    ),
                   ),
               ],
             ),

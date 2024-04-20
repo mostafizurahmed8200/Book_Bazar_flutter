@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class EmptyItemWidget extends StatelessWidget {
-  const EmptyItemWidget({super.key});
+  final String text;
+  final String icon;
+
+  const EmptyItemWidget({super.key, required this.text, required this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -11,13 +14,13 @@ class EmptyItemWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(Constant.emptyCartIcon),
-          SizedBox(
+          SvgPicture.asset(icon),
+          const SizedBox(
             height: 20,
           ),
           Text(
-            'Empty Cart',
-            style: Constant.headerTextStyle,
+            text,
+            style: Constant.header2TextStyle,
           )
         ],
       ),

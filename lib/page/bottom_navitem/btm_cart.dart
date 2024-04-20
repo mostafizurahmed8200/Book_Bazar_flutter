@@ -22,7 +22,7 @@ class _BottomNavigationCartState extends State<BottomNavigationCart> {
           actionIcon: Constant.notificationIcon,
         ),
       ),
-      body: EmptyItemWidget(),
+      body: EmptyItemWidget(icon: Constant.emptyCartIcon, text: "Empty Cart"),
     );
   }
 }
