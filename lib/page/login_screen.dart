@@ -1,3 +1,4 @@
+import 'package:book_bazar/domain/firebase/firebase_loginauth.dart';
 import 'package:book_bazar/widget/button_stroke_widget.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
@@ -6,7 +7,6 @@ import 'package:flutter/material.dart';
 import '../constant/constant.dart';
 import '../constant/dart_algorithm.dart';
 import '../constant/utils.dart';
-import '../domain/firebase/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -93,7 +93,6 @@ class _LoginPageState extends State<LoginPage> {
                   isAutocorrect: false,
                   isEnableSuggestion: true,
                   isObscureText: true,
-                  maxLength: 8,
                   controller: controllerPassword,
                   onChanged: (String value) {
                     setState(() {
@@ -146,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                         const Duration(seconds: 5),
                         () {
                           Navigator.of(context).pop();
-                          FireAuth.signInWithEmailAndPassword(context,
+                          FirebaseLoginAuth.signInWithEmailAndPassword(context,
                               email: controllerEmail.text,
                               password: controllerPassword.text);
                         },

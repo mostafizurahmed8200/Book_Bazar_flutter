@@ -9,8 +9,16 @@ class Constant {
   static const ob3Image = 'image/ob3.png';
 
   static const congratulationsIcon = 'image/congratulation.png';
-  static const googleIcon = 'image/google.png';
-  static const appleIcon = 'image/apple-logo.png';
+  static const googleIcon = 'image/sign_google.png';
+  static const appleIcon = 'image/sign_apple.png';
+
+  //Home Screen Icon
+  static const homeIcon = 'image/btm_home.png';
+  static const notificationIcon = 'image/appbar_notif.png';
+  static const categoryIcon = 'image/btm_book.png';
+  static const searchIcon = 'image/appbar_search.png';
+  static const cartIcon = 'image/btm_cart.png';
+  static const profileIcon = 'image/btm_profile.png';
 
   //Color Section-
   static const Color appColor = Color(0xFF54408C);

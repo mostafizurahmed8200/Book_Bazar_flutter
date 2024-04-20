@@ -1,9 +1,9 @@
+import 'package:book_bazar/domain/firebase/firebase_forgetpassword.dart';
 import 'package:flutter/material.dart';
 
 import '../constant/constant.dart';
 import '../constant/dart_algorithm.dart';
 import '../constant/utils.dart';
-import '../domain/firebase/firebase_auth.dart';
 import '../widget/button_widget.dart';
 import '../widget/editext_widget.dart';
 
@@ -101,7 +101,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       const Duration(seconds: 5),
                       () {
                         Navigator.of(context).pop();
-                        FireAuth.resetPassword(
+                        FirebaseAuthForgetPassword.resetPassword(
                           context,
                           email: controllerEmail.text,
                         );

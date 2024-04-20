@@ -1,7 +1,7 @@
 import 'package:book_bazar/constant/constant.dart';
 import 'package:book_bazar/constant/dart_algorithm.dart';
 import 'package:book_bazar/constant/utils.dart';
-import 'package:book_bazar/domain/firebase/firebase_auth.dart';
+import 'package:book_bazar/domain/firebase/firebase_createauth.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
 import 'package:flutter/material.dart';
@@ -239,7 +239,7 @@ class _SignupPageState extends State<SignupPage> {
                       const Duration(seconds: 5),
                       () {
                         Navigator.of(context).pop();
-                        FireAuth.registerUsingEmailPassword(context,
+                        FirebaseCreateAcAuth.registerUsingEmailPassword(context,
                             name: controllerName.text,
                             email: controllerEmail.text,
                             password: controllerPassword.text);

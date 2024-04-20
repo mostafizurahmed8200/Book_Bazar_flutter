@@ -7,6 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'page/forgetpassword_screen.dart';
+import 'page/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
           'congratulationspage': (context) => const CongratulationsPage(),
           'loginpage': (context) => const LoginPage(),
           'forgetPasswordPage': (context) => const ForgetPasswordPage(),
+          'homeScreenPage': (context) => const HomeScreenPage(),
         });
   }
 }
