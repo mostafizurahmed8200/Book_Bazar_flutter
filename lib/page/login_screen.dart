@@ -47,14 +47,14 @@ class _LoginPageState extends State<LoginPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  Constant.welcomeback,
+                  Constant.welcomeBack,
                   style: Constant.headerTextStyle,
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  Constant.welcomebackHint,
+                  Constant.welcomeBackHint,
                   style: Constant.subHeaderTextStyle,
                 ),
                 const SizedBox(
@@ -213,7 +213,27 @@ class _LoginPageState extends State<LoginPage> {
                   width: MediaQuery.of(context).size.width * .90,
                   textColor: Colors.black,
                   onCLickButton: () {
-                    GoogleLogin.googleSignIn(context, googleSignIn);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return const AlertDialog(
+                          content: CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            child: CircularProgressIndicator(
+                              color: Colors.red,
+                            ),
+                          ),
+                        );
+                      },
+                    );
+
+                    Future.delayed(
+                      const Duration(seconds: 1),
+                      () {
+                        Navigator.of(context).pop();
+                        GoogleLogin.googleSignIn(context, googleSignIn);
+                      },
+                    );
                   },
                 ),
                 const SizedBox(

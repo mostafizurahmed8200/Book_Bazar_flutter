@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class Constant {
   //Icon Section-
-  static const splashlogo = 'image/splash_logo.png';
+  static const splashLogo = 'image/splash_logo.png';
 
   static const ob1Image = 'image/ob1.png';
   static const ob2Image = 'image/ob2.png';
@@ -13,17 +13,18 @@ class Constant {
   static const appleIcon = 'image/sign_apple.png';
 
   //Home Screen Icon
-  static const homeIcon = 'image/btm_home.png';
+  static const homeIcon = 'image/btm_home.svg';
   static const notificationIcon = 'image/appbar_notif.png';
-  static const categoryIcon = 'image/btm_book.png';
+  static const categoryIcon = 'image/btm_category.svg';
   static const searchIcon = 'image/appbar_search.png';
-  static const cartIcon = 'image/btm_cart.png';
-  static const profileIcon = 'image/btm_profile.png';
+  static const cartIcon = 'image/btm_cart.svg';
+  static const profileIcon = 'image/btm_profile.svg';
 
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
   static const Color appLightTrnsColor = Color(0xFFF3F3F3);
-  static const Color grey50 = Color(0xFFF1F1F1);
+  static const Color grey50 = Color(0xFFFAFAFA);
+  static const Color grey500 = Color(0xFFA6A6A6);
 
   //Text Section--
 
@@ -39,13 +40,13 @@ class Constant {
       "Ready to embark on a quest for inspiration and knowledge? Your adventure begins now. Let's go!";
 
   static const signup = 'Sign up';
-  static const welcomeback = 'Welcome Back 👋';
+  static const welcomeBack = 'Welcome Back 👋';
   static const createAcHint = 'Create account and choose favorite menu';
-  static const welcomebackHint = 'Sign to your account';
+  static const welcomeBackHint = 'Sign to your account';
 
   static const forgetPassword = 'Forget Password';
   static const forgetPasswordHint =
-      "Please enter your email, \nWe will send verification code to your email.";
+      "Please enter your email, \nWe will send verification code to your email";
 
   //Home Screen
   static const home = 'Home';
@@ -59,7 +60,6 @@ class Constant {
   static const seeAll = 'See all';
 
 //Text Style Section
-
   static TextStyle headerTextStyle = const TextStyle(
       fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold);
 
