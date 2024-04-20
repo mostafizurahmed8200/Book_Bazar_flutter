@@ -14,16 +14,19 @@ class NotificationPage extends StatefulWidget {
 class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBarWidget(
           title: Constant.notification,
           leadingIcon: Constant.arrowBackIcon,
+          onCLickView: () {
+            Navigator.pop(context);
+          },
         ),
       ),
-      body: EmptyItemWidget(
-          icon: Constant.notificationIcon, text: "No Notification"),
+      body: const EmptyItemWidget(
+          icon: Constant.emptyNotification, text: "No Notification"),
     );
   }
 }

@@ -69,7 +69,7 @@ class Constant {
       fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold);
 
   static TextStyle header2TextStyle = const TextStyle(
-      fontSize: 30, color: grey500, fontWeight: FontWeight.bold);
+      fontSize: 25, color: grey500, fontWeight: FontWeight.bold);
 
   static TextStyle subHeaderTextStyle = const TextStyle(
     fontSize: 15,

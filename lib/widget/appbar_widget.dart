@@ -7,12 +7,14 @@ class AppBarWidget extends StatelessWidget {
   final String? title;
   final String? leadingIcon;
   final String? actionIcon;
+  final Function? onCLickView;
 
   const AppBarWidget({
     super.key,
     this.title,
     this.leadingIcon,
     this.actionIcon,
+    this.onCLickView,
   });
 
   @override
@@ -26,11 +28,18 @@ class AppBarWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 if (leadingIcon != null)
-                  SvgPicture.asset(
-                    leadingIcon!,
-                    width: 25,
-                    height: 25,
-                    color: Colors.black54,
+                  GestureDetector(
+                    onTap: () {
+                      if (onCLickView != null) {
+                        onCLickView!(); // Invoke the function if it's not null
+                      }
+                    },
+                    child: SvgPicture.asset(
+                      leadingIcon!,
+                      width: 25,
+                      height: 25,
+                      color: Colors.black54,
+                    ),
                   ),
                 if (title != null)
                   Expanded(
@@ -44,7 +53,9 @@ class AppBarWidget extends StatelessWidget {
                   ),
                 if (actionIcon != null)
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, 'notificationPage');
+                    },
                     child: SvgPicture.asset(
                       actionIcon!,
                       width: 25,

@@ -1,5 +1,6 @@
 import 'package:book_bazar/page/congratulation_screen.dart';
 import 'package:book_bazar/page/login_screen.dart';
+import 'package:book_bazar/page/notification_screen.dart';
 import 'package:book_bazar/page/onboardingscreen.dart';
 import 'package:book_bazar/page/signup_screen.dart';
 import 'package:book_bazar/page/splashscreen.dart';
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
           'loginpage': (context) => const LoginPage(),
           'forgetPasswordPage': (context) => const ForgetPasswordPage(),
           'homeScreenPage': (context) => const HomeScreenPage(),
+          'notificationPage': (context) => const NotificationPage(),
         });
   }
 }
