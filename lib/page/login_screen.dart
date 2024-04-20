@@ -1,8 +1,10 @@
 import 'package:book_bazar/domain/firebase/firebase_loginauth.dart';
+import 'package:book_bazar/domain/google/google_login.dart';
 import 'package:book_bazar/widget/button_stroke_widget.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../constant/constant.dart';
 import '../constant/dart_algorithm.dart';
@@ -18,6 +20,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController controllerEmail = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   String getEmailText = ''; //Email Text
   String getPassword = '';
@@ -209,7 +212,9 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                   width: MediaQuery.of(context).size.width * .90,
                   textColor: Colors.black,
-                  onCLickButton: () {},
+                  onCLickButton: () {
+                    GoogleLogin.googleSignIn(context, googleSignIn);
+                  },
                 ),
                 const SizedBox(
                   height: 10,

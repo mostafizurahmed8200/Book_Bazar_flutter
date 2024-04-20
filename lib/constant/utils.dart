@@ -19,7 +19,7 @@ class Utils {
               //var width = MediaQuery.of(context).size.width * .65;
 
               return SizedBox(
-                height: 150,
+                height: MediaQuery.of(context).size.height * 0.30,
                 child: Column(
                   children: [
                     Text(

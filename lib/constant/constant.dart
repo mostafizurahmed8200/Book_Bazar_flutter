@@ -47,6 +47,17 @@ class Constant {
   static const forgetPasswordHint =
       "Please enter your email, \nWe will send verification code to your email.";
 
+  //Home Screen
+  static const home = 'Home';
+  static const category = 'Category';
+  static const cart = 'Cart';
+  static const profile = 'Profile';
+
+  static const topOfWeek = 'Top of Week';
+  static const bestVendor = 'Best Vendors';
+  static const authors = 'Authors';
+  static const seeAll = 'See all';
+
 //Text Style Section
 
   static TextStyle headerTextStyle = const TextStyle(
