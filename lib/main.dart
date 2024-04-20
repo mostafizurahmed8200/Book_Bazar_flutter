@@ -6,6 +6,8 @@ import 'package:book_bazar/page/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
+import 'page/forgetpassword_screen.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -31,6 +33,7 @@ class MyApp extends StatelessWidget {
           'signuppage': (context) => const SignupPage(),
           'congratulationspage': (context) => const CongratulationsPage(),
           'loginpage': (context) => const LoginPage(),
+          'forgetPasswordPage': (context) => const ForgetPasswordPage(),
         });
   }
 }

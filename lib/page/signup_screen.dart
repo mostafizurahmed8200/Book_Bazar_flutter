@@ -116,7 +116,7 @@ class _SignupPageState extends State<SignupPage> {
                 isAutocorrect: false,
                 isEnableSuggestion: true,
                 isObscureText: true,
-                maxLength: 8,
+                maxLength: 20,
                 controller: controllerPassword,
                 onChanged: (String value) {
                   setState(() {
@@ -254,17 +254,20 @@ class _SignupPageState extends State<SignupPage> {
                 height: 20,
               ),
               Center(
-                child: RichText(
-                  text: const TextSpan(
-                    text: 'Have an account? ',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'Sign in',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Constant.appColor)),
-                    ],
+                child: GestureDetector(
+                  onTap: () => Navigator.pushNamed(context, 'loginpage'),
+                  child: RichText(
+                    text: const TextSpan(
+                      text: 'Have an account? ',
+                      style: TextStyle(color: Colors.grey, fontSize: 18),
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: 'Sign in',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Constant.appColor)),
+                      ],
+                    ),
                   ),
                 ),
               ),

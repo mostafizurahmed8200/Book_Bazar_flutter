@@ -1,8 +1,12 @@
+import 'package:book_bazar/widget/button_stroke_widget.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../constant/constant.dart';
+import '../constant/dart_algorithm.dart';
+import '../constant/utils.dart';
+import '../domain/firebase/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -12,6 +16,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController controllerEmail = TextEditingController();
+  TextEditingController controllerPassword = TextEditingController();
+
+  String getEmailText = ''; //Email Text
+  String getPassword = '';
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -60,12 +70,12 @@ class _LoginPageState extends State<LoginPage> {
                   isAutocorrect: false,
                   isEnableSuggestion: true,
                   isObscureText: false,
-                  // controller: controllerEmail,
-                  // onChanged: (String value) {
-                  //   setState(() {
-                  //     getEmailText = controllerEmail.text.toString();
-                  //   });
-                  //},
+                  controller: controllerEmail,
+                  onChanged: (String value) {
+                    setState(() {
+                      getEmailText = controllerEmail.text.toString();
+                    });
+                  },
                 ),
                 const SizedBox(
                   height: 10,
@@ -84,22 +94,23 @@ class _LoginPageState extends State<LoginPage> {
                   isEnableSuggestion: true,
                   isObscureText: true,
                   maxLength: 8,
-                  // controller: controllerPassword,
-                  // onChanged: (String value) {
-                  //   setState(() {
-                  //     getPassword = controllerPassword.text;
-                  //     getPasswordText8 = controllerPassword.text;
-                  //     getPasswordTextAtleast1number = controllerPassword.text;
-                  //     getPasswordTextAtleastLowercase = controllerPassword.text;
-                  //   });
-                  // },
+                  controller: controllerPassword,
+                  onChanged: (String value) {
+                    setState(() {
+                      getPassword = controllerPassword.text;
+                    });
+                  },
                 ),
                 const SizedBox(
                   height: 20,
                 ),
-                Text(
-                  'Forget Password ?',
-                  style: TextStyle(color: Constant.appColor),
+                GestureDetector(
+                  onTap: () =>
+                      Navigator.pushNamed(context, 'forgetPasswordPage'),
+                  child: const Text(
+                    'Forget Password ?',
+                    style: TextStyle(color: Constant.appColor),
+                  ),
                 ),
                 const SizedBox(
                   height: 20,
@@ -111,22 +122,56 @@ class _LoginPageState extends State<LoginPage> {
                   backgroundColor: Constant.appColor,
                   width: MediaQuery.of(context).size.width * .90,
                   textColor: Colors.white,
+                  onCLickButton: () {
+                    if (isValidation(
+                      context,
+                      getEmailText,
+                      getPassword,
+                    )) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return const AlertDialog(
+                            content: CircleAvatar(
+                              backgroundColor: Colors.transparent,
+                              child: CircularProgressIndicator(
+                                color: Colors.red,
+                              ),
+                            ),
+                          );
+                        },
+                      );
+
+                      Future.delayed(
+                        const Duration(seconds: 5),
+                        () {
+                          Navigator.of(context).pop();
+                          FireAuth.signInWithEmailAndPassword(context,
+                              email: controllerEmail.text,
+                              password: controllerPassword.text);
+                        },
+                      );
+                    }
+                  },
                 ),
                 const SizedBox(
                   height: 20,
                 ),
                 Center(
-                  child: RichText(
-                    text: const TextSpan(
-                      text: "Don't have an account? ",
-                      style: TextStyle(color: Colors.grey, fontSize: 18),
-                      children: <TextSpan>[
-                        TextSpan(
-                            text: 'Sign up',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Constant.appColor)),
-                      ],
+                  child: GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, 'signuppage'),
+                    child: RichText(
+                      text: const TextSpan(
+                        text: "Don't have an account? ",
+                        style: TextStyle(color: Colors.grey, fontSize: 18),
+                        children: <TextSpan>[
+                          TextSpan(
+                              text: 'Sign up',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Constant.appColor)),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -154,12 +199,54 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ],
-                )
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                ButtonStrokeWidget(
+                  text: 'Sign in with Google',
+                  iconData: Constant.googleIcon,
+                  roundCorner: 50,
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * .90,
+                  textColor: Colors.black,
+                  onCLickButton: () {},
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ButtonStrokeWidget(
+                  text: 'Sign in with Apple',
+                  iconData: Constant.appleIcon,
+                  roundCorner: 50,
+                  height: 50,
+                  width: MediaQuery.of(context).size.width * .90,
+                  textColor: Colors.black,
+                  onCLickButton: () {},
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  bool isValidation(
+    BuildContext context,
+    String emailText,
+    String passwordText,
+  ) {
+    if (emailText.isEmpty) {
+      Utils.dialogUtils(context, "Please enter Email Address");
+      return false;
+    } else if (!Expression.containsAtEmailSymbol(emailText)) {
+      Utils.dialogUtils(context, "Please enter valid Email Address");
+      return false;
+    } else if (passwordText.isEmpty) {
+      Utils.dialogUtils(context, "Please enter your password");
+      return false;
+    }
+    return true;
   }
 }

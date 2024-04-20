@@ -9,6 +9,8 @@ class Constant {
   static const ob3Image = 'image/ob3.png';
 
   static const congratulationsIcon = 'image/congratulation.png';
+  static const googleIcon = 'image/google.png';
+  static const appleIcon = 'image/apple-logo.png';
 
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
@@ -32,6 +34,10 @@ class Constant {
   static const welcomeback = 'Welcome Back 👋';
   static const createAcHint = 'Create account and choose favorite menu';
   static const welcomebackHint = 'Sign to your account';
+
+  static const forgetPassword = 'Forget Password';
+  static const forgetPasswordHint =
+      "Please enter your email, \nWe will send verification code to your email.";
 
 //Text Style Section
 

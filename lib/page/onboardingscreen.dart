@@ -87,6 +87,9 @@ class _OnboardingPageState extends State<OnboardingPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ButtonWidget(
+                    onCLickButton: () {
+                      Navigator.pushNamed(context, 'loginpage');
+                    },
                     text: 'LOGIN',
                     roundCorner: 10.0,
                     backgroundColor: Constant.appColor,
