@@ -8,7 +8,7 @@ import 'bottom_navitem/btm_home.dart';
 import 'bottom_navitem/btm_profile.dart';
 
 class HomeScreenPage extends StatefulWidget {
-  const HomeScreenPage({super.key});
+  const HomeScreenPage({Key? key}) : super(key: key);
 
   @override
   State<HomeScreenPage> createState() => _HomeScreenPageState();
@@ -16,6 +16,7 @@ class HomeScreenPage extends StatefulWidget {
 
 class _HomeScreenPageState extends State<HomeScreenPage> {
   int _selectedItemIndex = 0;
+  late int _previousItemIndex;
 
   final List<Widget> _pages = [
     const BottomNavigationHome(),
@@ -26,48 +27,58 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _pages[_selectedItemIndex],
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: _buildIcon(Constant.homeIcon, 0),
-              label: Constant.home,
-            ),
-            BottomNavigationBarItem(
-              icon: _buildIcon(Constant.categoryIcon, 1),
-              label: Constant.category,
-            ),
-            BottomNavigationBarItem(
-              icon: _buildIcon(Constant.cartIcon, 2),
-              label: Constant.cart,
-            ),
-            BottomNavigationBarItem(
-              icon: _buildIcon(Constant.profileIcon, 3),
-              label: Constant.profile,
-            ),
-          ],
-          currentIndex: _selectedItemIndex,
-          backgroundColor: Constant.grey50,
-          selectedItemColor: Constant.appColor,
-          unselectedItemColor: Colors.grey,
-          // Set unselected item color
-          type: BottomNavigationBarType.fixed,
-          elevation: 0,
-          onTap: (index) {
-            setState(() {
-              _selectedItemIndex = index;
-            });
-          },
+    return WillPopScope(
+      onWillPop: () async {
+        if (_selectedItemIndex != 0) {
+          setState(() {
+            _previousItemIndex = _selectedItemIndex;
+            _selectedItemIndex = 0;
+          });
+          return false;
+        }
+        return true;
+      },
+      child: Scaffold(
+        body: _pages[_selectedItemIndex],
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: BottomNavigationBar(
+            items: <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: _buildIcon(Constant.homeIcon, 0),
+                label: Constant.home,
+              ),
+              BottomNavigationBarItem(
+                icon: _buildIcon(Constant.categoryIcon, 1),
+                label: Constant.category,
+              ),
+              BottomNavigationBarItem(
+                icon: _buildIcon(Constant.cartIcon, 2),
+                label: Constant.cart,
+              ),
+              BottomNavigationBarItem(
+                icon: _buildIcon(Constant.profileIcon, 3),
+                label: Constant.profile,
+              ),
+            ],
+            currentIndex: _selectedItemIndex,
+            backgroundColor: Constant.grey50,
+            selectedItemColor: Constant.appColor,
+            unselectedItemColor: Colors.grey,
+            type: BottomNavigationBarType.fixed,
+            elevation: 0,
+            onTap: (index) {
+              setState(() {
+                _selectedItemIndex = index;
+              });
+            },
+          ),
         ),
       ),
     );
   }
 
   Widget _buildIcon(String assetPath, int index) {
-    // Check if the current index is the selected index
     final isSelected = index == _selectedItemIndex;
     return SvgPicture.asset(
       assetPath,

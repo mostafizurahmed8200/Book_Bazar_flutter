@@ -16,7 +16,7 @@ class _NotificationPageState extends State<NotificationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(kToolbarHeight),
+        preferredSize: const Size.fromHeight(100),
         child: AppBarWidget(
           title: Constant.notification,
           leadingIcon: Constant.arrowBackIcon,

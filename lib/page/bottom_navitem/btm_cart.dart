@@ -16,7 +16,7 @@ class _BottomNavigationCartState extends State<BottomNavigationCart> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: Size.fromHeight(100),
         child: AppBarWidget(
           title: Constant.cart,
           actionIcon: Constant.notificationIcon,

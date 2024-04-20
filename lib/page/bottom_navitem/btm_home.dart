@@ -14,7 +14,7 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: Size.fromHeight(100),
         child: AppBarWidget(
           title: Constant.home,
           leadingIcon: Constant.searchIcon,

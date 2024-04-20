@@ -15,19 +15,19 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  String loginFlag = await DBHelper.getLoginFlag();
+  String? loginFlag = await DBHelper.getLoginFlag();
 
   runApp(
     MyApp(
-      loginFlag: loginFlag,
+      loginFlag: loginFlag, // Provide a default value if loginFlag is null
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  String loginFlag;
+  final String? loginFlag; // Make loginFlag nullable
 
-  MyApp({super.key, required this.loginFlag});
+  const MyApp({super.key, this.loginFlag});
 
   @override
   Widget build(BuildContext context) {

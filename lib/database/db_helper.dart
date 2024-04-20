@@ -32,9 +32,15 @@ class DBHelper {
     final Database db = await database();
     final List<Map<String, dynamic>> result =
         await db.rawQuery('SELECT  * FROM LoginTbl');
-    String flag = result[0]['loginFlag'];
-    print('flag $flag');
-    return flag;
+
+    if (result.isNotEmpty) {
+      String flag = result[0]['loginFlag'];
+
+      return flag;
+    } else {
+      // If no rows are found, return a default value or handle the case accordingly
+      return 'DefaultFlag';
+    }
   }
 
   //Delete Item from Table--

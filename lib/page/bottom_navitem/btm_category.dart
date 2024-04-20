@@ -16,7 +16,7 @@ class _BottomNavigationCategoryState extends State<BottomNavigationCategory> {
   Widget build(BuildContext context) {
     return const Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: Size.fromHeight(100),
         child: AppBarWidget(
           title: Constant.category,
           leadingIcon: Constant.searchIcon,
