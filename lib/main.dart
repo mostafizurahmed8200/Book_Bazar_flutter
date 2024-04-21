@@ -1,5 +1,6 @@
 import 'package:book_bazar/database/db_helper.dart';
 import 'package:book_bazar/page/congratulation_screen.dart';
+import 'package:book_bazar/page/home/authors_screen.dart';
 import 'package:book_bazar/page/login_screen.dart';
 import 'package:book_bazar/page/notification_screen.dart';
 import 'package:book_bazar/page/onboardingscreen.dart';
@@ -11,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'page/forgetpassword_screen.dart';
+import 'page/home/bestvendor_screen.dart';
+import 'page/home/topweek_screen.dart';
 import 'page/home_screen.dart';
 
 void main() async {
@@ -55,6 +58,9 @@ class MyApp extends StatelessWidget {
           'homeScreenPage': (context) => const HomeScreenPage(),
           'notificationPage': (context) => const NotificationPage(),
           'searchPage': (context) => const SearchPage(),
+          'bestVendorPage': (context) => const HomeBestVendorPage(),
+          'topOfWeekPage': (context) => const HomeTopOfWeekPage(),
+          'authorsPage': (context) => const HomeAuthorsPage(),
         });
   }
 }

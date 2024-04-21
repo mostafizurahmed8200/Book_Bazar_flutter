@@ -103,7 +103,9 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
               const SizedBox(
                 height: 10,
               ),
-              _buildTitleOfView(Constant.topOfWeek, Constant.seeAll),
+              _buildTitleOfView(Constant.topOfWeek, Constant.seeAll, () {
+                Navigator.pushNamed(context, 'topOfWeekPage');
+              }),
               const SizedBox(
                 height: 10,
               ),
@@ -114,7 +116,9 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
               const SizedBox(
                 height: 10,
               ),
-              _buildTitleOfView(Constant.bestVendor, Constant.seeAll),
+              _buildTitleOfView(Constant.bestVendor, Constant.seeAll, () {
+                Navigator.pushNamed(context, 'bestVendorPage');
+              }),
               const SizedBox(
                 height: 10,
               ),
@@ -125,7 +129,9 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
               const SizedBox(
                 height: 10,
               ),
-              _buildTitleOfView(Constant.authors, Constant.seeAll),
+              _buildTitleOfView(Constant.authors, Constant.seeAll, () {
+                Navigator.pushNamed(context, 'authorsPage');
+              }),
               const SizedBox(
                 height: 10,
               ),
@@ -206,7 +212,7 @@ class SliderDataWidget extends StatelessWidget {
 }
 
 //TitleView
-Widget _buildTitleOfView(String text1, String text2) {
+Widget _buildTitleOfView(String text1, String text2, Function onClickSeeAll) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -214,9 +220,14 @@ Widget _buildTitleOfView(String text1, String text2) {
         text1,
         style: Constant.headerTextStyle,
       ),
-      Text(
-        text2,
-        style: Constant.seeAllTextStyle,
+      GestureDetector(
+        onTap: () {
+          onClickSeeAll();
+        },
+        child: Text(
+          text2,
+          style: Constant.seeAllTextStyle,
+        ),
       ),
     ],
   );
