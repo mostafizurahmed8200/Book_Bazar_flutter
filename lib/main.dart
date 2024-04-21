@@ -3,6 +3,7 @@ import 'package:book_bazar/page/congratulation_screen.dart';
 import 'package:book_bazar/page/login_screen.dart';
 import 'package:book_bazar/page/notification_screen.dart';
 import 'package:book_bazar/page/onboardingscreen.dart';
+import 'package:book_bazar/page/search_screen.dart';
 import 'package:book_bazar/page/signup_screen.dart';
 import 'package:book_bazar/page/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
           'forgetPasswordPage': (context) => const ForgetPasswordPage(),
           'homeScreenPage': (context) => const HomeScreenPage(),
           'notificationPage': (context) => const NotificationPage(),
+          'searchPage': (context) => const SearchPage(),
         });
   }
 }

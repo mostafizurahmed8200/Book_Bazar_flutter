@@ -36,12 +36,15 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(Constant.appbarSize),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.home,
           leadingIcon: Constant.searchIcon,
           actionIcon: Constant.notificationIcon,
+          leadingOnCLickView: () {
+            Navigator.pushNamed(context, 'searchPage');
+          },
         ),
       ),
       body: SingleChildScrollView(

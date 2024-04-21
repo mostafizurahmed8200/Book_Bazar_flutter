@@ -5,8 +5,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 class EmptyItemWidget extends StatelessWidget {
   final String text;
   final String icon;
+  final double? width;
+  final double? height;
+  final Color? color;
 
-  const EmptyItemWidget({super.key, required this.text, required this.icon});
+  const EmptyItemWidget(
+      {super.key,
+      required this.text,
+      required this.icon,
+      this.width,
+      this.height,
+      this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +23,12 @@ class EmptyItemWidget extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(icon),
+          SvgPicture.asset(
+            color: color,
+            icon,
+            width: width,
+            height: height,
+          ),
           const SizedBox(
             height: 20,
           ),

@@ -20,7 +20,7 @@ class _NotificationPageState extends State<NotificationPage> {
         child: AppBarWidget(
           title: Constant.notification,
           leadingIcon: Constant.arrowBackIcon,
-          onCLickView: () {
+          leadingOnCLickView: () {
             Navigator.pop(context);
           },
         ),

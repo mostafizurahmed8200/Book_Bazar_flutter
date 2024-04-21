@@ -16,7 +16,7 @@ class HomeScreenPage extends StatefulWidget {
 
 class _HomeScreenPageState extends State<HomeScreenPage> {
   int _selectedItemIndex = 0;
-  late int _previousItemIndex;
+  // late int _previousItemIndex;
 
   final List<Widget> _pages = [
     const BottomNavigationHome(),
@@ -31,7 +31,7 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
       onWillPop: () async {
         if (_selectedItemIndex != 0) {
           setState(() {
-            _previousItemIndex = _selectedItemIndex;
+            // _previousItemIndex = _selectedItemIndex;
             _selectedItemIndex = 0;
           });
           return false;

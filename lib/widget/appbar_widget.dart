@@ -7,14 +7,14 @@ class AppBarWidget extends StatelessWidget {
   final String? title;
   final String? leadingIcon;
   final String? actionIcon;
-  final Function? onCLickView;
+  final Function? leadingOnCLickView;
 
   const AppBarWidget({
     super.key,
     this.title,
     this.leadingIcon,
     this.actionIcon,
-    this.onCLickView,
+    this.leadingOnCLickView,
   });
 
   @override
@@ -32,8 +32,8 @@ class AppBarWidget extends StatelessWidget {
                   if (leadingIcon != null)
                     GestureDetector(
                       onTap: () {
-                        if (onCLickView != null) {
-                          onCLickView!(); // Invoke the function if it's not null
+                        if (leadingOnCLickView != null) {
+                          leadingOnCLickView!(); // Invoke the function if it's not null
                         }
                       },
                       child: SvgPicture.asset(

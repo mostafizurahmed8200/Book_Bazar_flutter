@@ -14,13 +14,16 @@ class BottomNavigationCategory extends StatefulWidget {
 class _BottomNavigationCategoryState extends State<BottomNavigationCategory> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(Constant.appbarSize),
+        preferredSize: const Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.category,
           leadingIcon: Constant.searchIcon,
           actionIcon: Constant.notificationIcon,
+          leadingOnCLickView: () {
+            Navigator.pushNamed(context, 'searchPage');
+          },
         ),
       ),
     );

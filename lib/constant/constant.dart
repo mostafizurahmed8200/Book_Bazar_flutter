@@ -92,6 +92,7 @@ class Constant {
   static const authors = 'Authors';
   static const seeAll = 'See all';
   static const notification = 'Notification';
+  static const search = 'Search';
 
   static const specialOffer = 'Special Offer';
   static const discount25 = 'Discount 25 %';
