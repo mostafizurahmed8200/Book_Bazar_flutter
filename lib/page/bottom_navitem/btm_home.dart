@@ -1,11 +1,15 @@
 import 'package:book_bazar/constant/constant.dart';
+import 'package:book_bazar/model/model_authors.dart';
+import 'package:book_bazar/model/model_bestvendors.dart';
 import 'package:book_bazar/model/model_top_of_week.dart';
 import 'package:book_bazar/widget/appbar_widget.dart';
 import 'package:book_bazar/widget/button_widget.dart';
+import 'package:book_bazar/widget/card_widget_author.dart';
+import 'package:book_bazar/widget/card_widget_bestvendors.dart';
 import 'package:flutter/material.dart';
 
+import '../../widget/card_widget_top_of_week.dart';
 import '../../widget/dot_indicator.dart';
-import '../../widget/top_of_week_card_widget.dart';
 
 class BottomNavigationHome extends StatefulWidget {
   const BottomNavigationHome({super.key});
@@ -47,7 +51,7 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
           child: Column(
             children: [
               SizedBox(
-                height: 170,
+                height: 150,
                 child: Stack(
                   children: [
                     PageView(
@@ -97,10 +101,35 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
                 height: 10,
               ),
               _buildTitleOfView(Constant.topOfWeek, Constant.seeAll),
+              const SizedBox(
+                height: 10,
+              ),
               SizedBox(
-                height: 300,
+                height: 238,
                 child: _buildTopOfWeekBook(),
-              )
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              _buildTitleOfView(Constant.bestVendor, Constant.seeAll),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 100,
+                child: _buildBestVendors(),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              _buildTitleOfView(Constant.authors, Constant.seeAll),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 200,
+                child: _buildAuthor(),
+              ),
             ],
           ),
         ),
@@ -190,6 +219,7 @@ Widget _buildTitleOfView(String text1, String text2) {
   );
 }
 
+//Top of Week
 Widget _buildTopOfWeekBook() => ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
@@ -197,5 +227,27 @@ Widget _buildTopOfWeekBook() => ListView.builder(
       itemBuilder: (context, index) {
         final allItem = ModelTopOfWeek.topOfWeekList[index];
         return CardWidgetTopOfWeek(infoModel: allItem);
+      },
+    );
+
+//Vendor
+Widget _buildBestVendors() => ListView.builder(
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      itemCount: ModelBestVendors.topOfWeekList.length,
+      itemBuilder: (context, index) {
+        final allItem = ModelBestVendors.topOfWeekList[index];
+        return CardWidgetBestVendors(infoModel: allItem);
+      },
+    );
+
+//Author
+Widget _buildAuthor() => ListView.builder(
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      itemCount: ModelAuthors.topOfWeekList.length,
+      itemBuilder: (context, index) {
+        final allItem = ModelAuthors.topOfWeekList[index];
+        return CardWidgetAuthor(infoModel: allItem);
       },
     );

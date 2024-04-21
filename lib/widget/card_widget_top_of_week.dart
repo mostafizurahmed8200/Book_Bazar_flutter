@@ -22,7 +22,7 @@ class CardWidgetTopOfWeek extends StatelessWidget {
               child: Image.asset(
                 infoModel.bookCover,
                 fit: BoxFit.fill,
-                height: 200,
+                height: 180,
                 width: 150,
               ),
             ),

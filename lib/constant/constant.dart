@@ -30,6 +30,28 @@ class Constant {
   static const slideImg4 = 'image/slideImage4.jpeg';
   static const slideImg5 = 'image/slideImage5.jpeg';
 
+  //Vendor
+  static const vendor1 = 'image/vendor1.png';
+  static const vendor2 = 'image/vendor2.png';
+  static const vendor3 = 'image/vendor3.png';
+  static const vendor4 = 'image/vendor4.png';
+  static const vendor5 = 'image/vendor5.png';
+  static const vendor6 = 'image/vendor6.png';
+  static const vendor7 = 'image/vendor7.png';
+  static const vendor8 = 'image/vendor8.png';
+  static const vendor9 = 'image/vendor9.png';
+
+  //Author
+  static const author1 = 'image/author1.jpg';
+  static const author2 = 'image/author2.jpg';
+  static const author3 = 'image/author3.jpg';
+  static const author4 = 'image/author4.jpg';
+  static const author5 = 'image/author5.jpg';
+  static const author6 = 'image/author6.jpg';
+  static const author7 = 'image/author7.jpg';
+  static const author8 = 'image/author8.jpg';
+  static const author9 = 'image/author9.jpg';
+
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
   static const Color appLightTrnsColor = Color(0xFFF3F3F3);
@@ -82,7 +104,7 @@ class Constant {
 
 //Text Style Section
   static TextStyle headerTextStyle = const TextStyle(
-      fontSize: 30, color: Colors.black, fontWeight: FontWeight.bold);
+      fontSize: 27, color: Colors.black, fontWeight: FontWeight.bold);
 
   static TextStyle header2TextStyle = const TextStyle(
       fontSize: 25, color: grey500, fontWeight: FontWeight.bold);
