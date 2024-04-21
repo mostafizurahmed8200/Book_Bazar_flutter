@@ -8,6 +8,7 @@ import 'package:book_bazar/page/signup_screen.dart';
 import 'package:book_bazar/page/splashscreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'page/forgetpassword_screen.dart';
 import 'page/home_screen.dart';
@@ -17,12 +18,16 @@ void main() async {
   await Firebase.initializeApp();
 
   String? loginFlag = await DBHelper.getLoginFlag();
-
-  runApp(
-    MyApp(
-      loginFlag: loginFlag, // Provide a default value if loginFlag is null
-    ),
-  );
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]).then((_) {
+    runApp(
+      MyApp(
+        loginFlag: loginFlag, // Provide a default value if loginFlag is null
+      ),
+    );
+  });
 }
 
 class MyApp extends StatelessWidget {

@@ -17,11 +17,19 @@ class BottomNavigationCategory extends StatefulWidget {
 class _BottomNavigationCategoryState extends State<BottomNavigationCategory>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  late List<ModelCategory> _categoryData;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 5, vsync: this);
+    _categoryData = _fetchCategoryData();
+  }
+
+  List<ModelCategory> _fetchCategoryData() {
+    // Simulate fetching category data
+    return ModelCategory
+        .categoryList; // Replace this with your actual fetching logic
   }
 
   @override
@@ -78,13 +86,9 @@ class _BottomNavigationCategoryState extends State<BottomNavigationCategory>
           Expanded(
             child: TabBarView(
               controller: _tabController,
-              children: [
-                _buildAllProductTabs(),
-                _buildAllProductTabs(),
-                _buildAllProductTabs(),
-                _buildAllProductTabs(),
-                _buildAllProductTabs(),
-              ],
+              children: List.generate(5, (index) {
+                return _buildAllProductTabs(_categoryData);
+              }),
             ),
           ),
         ],
@@ -92,7 +96,8 @@ class _BottomNavigationCategoryState extends State<BottomNavigationCategory>
     );
   } // Tab Products
 
-  _buildAllProductTabs() => GridView.builder(
+  Widget _buildAllProductTabs(List<ModelCategory> categoryList) {
+    return GridView.builder(
       shrinkWrap: true,
       gridDelegate:
           const SliverGridDelegateWithFixedCrossAxisCountAndFixedHeight(
@@ -101,11 +106,12 @@ class _BottomNavigationCategoryState extends State<BottomNavigationCategory>
         mainAxisSpacing: 1,
         height: 220.0, //48 dp of height
       ),
-      itemCount: ModelCategory.categoryList.length,
+      itemCount: categoryList.length,
       itemBuilder: (context, index) {
-        final allItem = ModelCategory.categoryList[index];
-
+        final allItem = categoryList[index];
         return CardWidgetCategory(infoModel: allItem);
       },
-      scrollDirection: Axis.vertical);
+      scrollDirection: Axis.vertical,
+    );
+  }
 }
