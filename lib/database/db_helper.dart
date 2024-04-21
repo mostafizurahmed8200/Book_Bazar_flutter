@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-import '../model/salad_basket_sql.dart';
+import '../model/loginflag_model.dart';
 
 class DBHelper {
   //Create DB and Table

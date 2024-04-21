@@ -1,7 +1,6 @@
 import 'package:book_bazar/database/db_helper.dart';
 import 'package:book_bazar/domain/firebase/firebase_loginauth.dart';
 import 'package:book_bazar/domain/google/google_login.dart';
-import 'package:book_bazar/model/salad_basket_sql.dart';
 import 'package:book_bazar/widget/button_stroke_widget.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
@@ -11,6 +10,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import '../constant/constant.dart';
 import '../constant/dart_algorithm.dart';
 import '../constant/utils.dart';
+import '../model/loginflag_model.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

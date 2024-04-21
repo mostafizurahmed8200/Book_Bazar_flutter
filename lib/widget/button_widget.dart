@@ -36,8 +36,8 @@ class ButtonWidget extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.all(
-            Radius.circular(roundCorner),
+          borderRadius: BorderRadius.circular(
+            roundCorner,
           ),
         ),
         child: Center(

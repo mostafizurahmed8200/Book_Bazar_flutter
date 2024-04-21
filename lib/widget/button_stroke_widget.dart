@@ -38,8 +38,8 @@ class ButtonStrokeWidget extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.all(
-            Radius.circular(roundCorner),
+          borderRadius: BorderRadius.circular(
+            roundCorner,
           ),
           border: Border.all(color: Colors.grey, width: 1.0),
         ),

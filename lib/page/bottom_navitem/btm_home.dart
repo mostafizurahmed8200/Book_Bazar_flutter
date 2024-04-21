@@ -1,9 +1,11 @@
 import 'package:book_bazar/constant/constant.dart';
+import 'package:book_bazar/model/model_top_of_week.dart';
 import 'package:book_bazar/widget/appbar_widget.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../widget/dot_indicator.dart';
+import '../../widget/top_of_week_card_widget.dart';
 
 class BottomNavigationHome extends StatefulWidget {
   const BottomNavigationHome({super.key});
@@ -95,6 +97,10 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
                 height: 10,
               ),
               _buildTitleOfView(Constant.topOfWeek, Constant.seeAll),
+              SizedBox(
+                height: 300,
+                child: _buildTopOfWeekBook(),
+              )
             ],
           ),
         ),
@@ -117,10 +123,10 @@ class SliderDataWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Constant.grey60,
-        borderRadius: BorderRadius.all(
-          Radius.circular(10),
+        borderRadius: BorderRadius.circular(
+          10,
         ),
       ),
       child: Row(
@@ -183,3 +189,13 @@ Widget _buildTitleOfView(String text1, String text2) {
     ],
   );
 }
+
+Widget _buildTopOfWeekBook() => ListView.builder(
+      shrinkWrap: true,
+      scrollDirection: Axis.horizontal,
+      itemCount: ModelTopOfWeek.topOfWeekList.length,
+      itemBuilder: (context, index) {
+        final allItem = ModelTopOfWeek.topOfWeekList[index];
+        return CardWidgetTopOfWeek(infoModel: allItem);
+      },
+    );

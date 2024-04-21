@@ -7,9 +7,9 @@ class Utils {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10.0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              10.0,
             ),
           ),
           content: Builder(
