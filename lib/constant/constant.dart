@@ -30,6 +30,14 @@ class Constant {
   static const slideImg4 = 'image/slideImage4.jpeg';
   static const slideImg5 = 'image/slideImage5.jpeg';
 
+  //Category
+  static const cat1 = 'image/catimg1.png';
+  static const cat2 = 'image/catimg2.png';
+  static const cat3 = 'image/catimg3.png';
+  static const cat4 = 'image/catimg4.png';
+  static const cat5 = 'image/catimg5.png';
+  static const cat6 = 'image/catimg6.png';
+
   //Vendor
   static const vendor1 = 'image/vendor1.png';
   static const vendor2 = 'image/vendor2.png';
