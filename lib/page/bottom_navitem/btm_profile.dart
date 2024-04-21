@@ -1,3 +1,4 @@
+import 'package:book_bazar/widget/bottom_sheet_logout_widget.dart';
 import 'package:book_bazar/widget/profile_data_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -63,9 +64,28 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                       )
                     ],
                   ),
-                  const Text(
-                    'Logout',
-                    style: TextStyle(color: Colors.red, fontSize: 15),
+                  GestureDetector(
+                    onTap: () {
+                      showModalBottomSheet(
+                        isScrollControlled: true,
+                        context: context,
+                        backgroundColor: Colors.white,
+                        shape: const RoundedRectangleBorder(
+                          // <-- SEE HERE
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(25.0),
+                          ),
+                        ),
+                        builder: (BuildContext context) {
+                          return const BottomSheetLogoutWidget(); // Display the bottom sheet
+                        },
+                      );
+                      // Navigator.pushNamed(context, "");
+                    },
+                    child: const Text(
+                      Constant.logout,
+                      style: TextStyle(color: Colors.red, fontSize: 15),
+                    ),
                   )
                 ],
               ),

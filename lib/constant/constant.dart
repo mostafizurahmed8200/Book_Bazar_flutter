@@ -133,6 +133,10 @@ class Constant {
   static const orderHistory = 'Order History';
   static const helpCenter = 'Help Center';
   static const review = 'Review';
+  static const logout = 'Logout';
+  static const cancel = 'Cancel';
+  static const logoutInfo =
+      'You will be logout from all account and your all device. Are you sure to do?';
   static const continueShopping = 'Continue shopping';
   static const viewCart = 'View cart';
   static const loreposum =

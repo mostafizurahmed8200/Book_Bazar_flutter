@@ -34,7 +34,7 @@ class BottomSheetItemWidget extends StatelessWidget {
             Center(
               child: SvgPicture.asset(
                 Constant.bottomSheetBarBg,
-                color: Colors.grey,
+                // color: Colors.grey,
                 height: 8,
                 width: 100,
               ),
