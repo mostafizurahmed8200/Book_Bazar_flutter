@@ -69,6 +69,9 @@ class Constant {
   static const pr_order = 'image/pr_order.svg';
   static const pr_person = 'image/pr_person.svg';
 
+  //extra
+  static const bottomSheetBarBg = 'image/btm_sheet_bar.svg';
+
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
   static const Color appLightTrnsColor = Color(0xFFF3F3F3);
