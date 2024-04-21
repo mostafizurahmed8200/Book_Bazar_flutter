@@ -60,6 +60,15 @@ class Constant {
   static const author8 = 'image/author8.jpg';
   static const author9 = 'image/author9.jpg';
 
+  //profile
+  static const pr_address = 'image/pr_address.svg';
+  static const pr_arrowgo = 'image/pr_arrowgo.svg';
+  static const pr_favorite = 'image/pr_favorite.svg';
+  static const pr_help = 'image/pr_help.svg';
+  static const pr_offer = 'image/pr_offer.svg';
+  static const pr_order = 'image/pr_order.svg';
+  static const pr_person = 'image/pr_person.svg';
+
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
   static const Color appLightTrnsColor = Color(0xFFF3F3F3);
@@ -110,6 +119,14 @@ class Constant {
   static const discount50 = 'Discount 50 %';
 
   static const orderNow = 'Order Now';
+
+  //Profile Text
+  static const myAccount = 'My Account';
+  static const address = 'Address';
+  static const offers = 'Offer & Promos';
+  static const favorite = 'My Favorite';
+  static const orderHistory = 'Order History';
+  static const helpCenter = 'Help Center';
 
 //Text Style Section
   static TextStyle headerTextStyle = const TextStyle(
