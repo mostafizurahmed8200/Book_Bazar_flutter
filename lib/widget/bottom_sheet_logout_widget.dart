@@ -3,6 +3,9 @@ import 'package:book_bazar/database/db_helper.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
+import '../domain/google/google_login.dart';
 
 class BottomSheetLogoutWidget extends StatelessWidget {
   const BottomSheetLogoutWidget({
@@ -13,7 +16,7 @@ class BottomSheetLogoutWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     // final halfScreenHeight = screenHeight / 1;
-
+    final GoogleSignIn googleSignIn = GoogleSignIn();
     return SizedBox(
       height: screenHeight * .30,
       width: double.infinity,
@@ -66,6 +69,7 @@ class BottomSheetLogoutWidget extends StatelessWidget {
                       Navigator.pushNamedAndRemoveUntil(
                           context, 'loginpage', (route) => false);
                       await DBHelper.deleteLoginFlag();
+                      GoogleLogin.googleSignOut(context, googleSignIn);
                     },
                   ),
                   const SizedBox(
