@@ -19,14 +19,14 @@ class _NotificationPageState extends State<NotificationPage> {
         preferredSize: const Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.notification,
-          leadingIcon: Constant.arrowBackIcon,
+          leadingIcon: Constant.icon_arrowBack,
           leadingOnCLickView: () {
             Navigator.pop(context);
           },
         ),
       ),
       body: const EmptyItemWidget(
-          icon: Constant.emptyNotification, text: "No Notification"),
+          icon: Constant.icon_emptyNotification, text: "No Notification"),
     );
   }
 }

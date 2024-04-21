@@ -27,6 +27,7 @@ class CardWidgetTopOfWeek extends StatelessWidget {
             return BottomSheetItemWidget(
               bottomSheetBookCover: infoModel.bookCover,
               bottomSheetBookName: infoModel.bookName,
+              bottomSheetBookValue: infoModel.bookMoneyValue,
             ); // Display the bottom sheet
           },
         );

@@ -8,21 +8,18 @@ class Constant {
   static const ob2Image = 'image/ob2.png';
   static const ob3Image = 'image/ob3.png';
 
-  static const congratulationsIcon = 'image/congratulation.png';
-  static const googleIcon = 'image/sign_google.png';
-  static const appleIcon = 'image/sign_apple.png';
-
-  //Home Screen Icon
-  static const homeIcon = 'image/btm_home.svg';
-  static const notificationIcon = 'image/appbar_notification.svg';
-  static const categoryIcon = 'image/btm_category.svg';
-  static const searchIcon = 'image/appbar_search.svg';
-  static const cartIcon = 'image/btm_cart.svg';
-  static const profileIcon = 'image/btm_profile.svg';
-  static const arrowBackIcon = 'image/arrow_back.svg';
-
-  static const emptyCartIcon = 'image/empty_cart.svg';
-  static const emptyNotification = 'image/empty_notification.svg';
+  static const icon_congratulations = 'image/congratulation.png';
+  static const icon_google = 'image/sign_google.png';
+  static const icon_apple = 'image/sign_apple.png';
+  static const icon_home = 'image/btm_home.svg';
+  static const icon_notification = 'image/appbar_notification.svg';
+  static const icon_category = 'image/btm_category.svg';
+  static const icon_search = 'image/appbar_search.svg';
+  static const icon_cart = 'image/btm_cart.svg';
+  static const icon_profile = 'image/btm_profile.svg';
+  static const icon_arrowBack = 'image/arrow_back.svg';
+  static const icon_emptyCart = 'image/empty_cart.svg';
+  static const icon_emptyNotification = 'image/empty_notification.svg';
 
   static const slideImg1 = 'image/slideImage1.png';
   static const slideImg2 = 'image/slideImage2.jpg';
@@ -68,6 +65,11 @@ class Constant {
   static const pr_offer = 'image/pr_offer.svg';
   static const pr_order = 'image/pr_order.svg';
   static const pr_person = 'image/pr_person.svg';
+
+  //External Icon
+  static const icon_review = 'image/review_icon.svg';
+  static const icon_minus = 'image/minus_icon.svg';
+  static const icon_plus = 'image/plus_icon.svg';
 
   //extra
   static const bottomSheetBarBg = 'image/btm_sheet_bar.svg';
@@ -130,6 +132,11 @@ class Constant {
   static const favorite = 'My Favorite';
   static const orderHistory = 'Order History';
   static const helpCenter = 'Help Center';
+  static const review = 'Review';
+  static const continueShopping = 'Continue shopping';
+  static const viewCart = 'View cart';
+  static const loreposum =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.';
 
 //Text Style Section
   static TextStyle headerTextStyle = const TextStyle(

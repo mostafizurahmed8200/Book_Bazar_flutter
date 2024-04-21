@@ -211,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 ButtonStrokeWidget(
                   text: 'Sign in with Google',
-                  iconData: Constant.googleIcon,
+                  iconData: Constant.icon_google,
                   roundCorner: 50,
                   height: 50,
                   width: MediaQuery.of(context).size.width * .90,
@@ -248,7 +248,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 ButtonStrokeWidget(
                   text: 'Sign in with Apple',
-                  iconData: Constant.appleIcon,
+                  iconData: Constant.icon_apple,
                   roundCorner: 50,
                   height: 50,
                   width: MediaQuery.of(context).size.width * .90,

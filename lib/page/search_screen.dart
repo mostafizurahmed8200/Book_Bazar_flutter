@@ -20,7 +20,7 @@ class _SearchPageState extends State<SearchPage> {
         preferredSize: const Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.search,
-          leadingIcon: Constant.arrowBackIcon,
+          leadingIcon: Constant.icon_arrowBack,
           leadingOnCLickView: () {
             Navigator.pop(context);
           },
@@ -45,7 +45,7 @@ class _SearchPageState extends State<SearchPage> {
                   width: 200,
                   height: 200,
                   color: Constant.grey60,
-                  icon: Constant.searchIcon,
+                  icon: Constant.icon_search,
                   text: "Empty Search"),
             ),
           ],

@@ -45,19 +45,19 @@ class _HomeScreenPageState extends State<HomeScreenPage> {
           child: BottomNavigationBar(
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: _buildIcon(Constant.homeIcon, 0),
+                icon: _buildIcon(Constant.icon_home, 0),
                 label: Constant.home,
               ),
               BottomNavigationBarItem(
-                icon: _buildIcon(Constant.categoryIcon, 1),
+                icon: _buildIcon(Constant.icon_category, 1),
                 label: Constant.category,
               ),
               BottomNavigationBarItem(
-                icon: _buildIcon(Constant.cartIcon, 2),
+                icon: _buildIcon(Constant.icon_cart, 2),
                 label: Constant.cart,
               ),
               BottomNavigationBarItem(
-                icon: _buildIcon(Constant.profileIcon, 3),
+                icon: _buildIcon(Constant.icon_profile, 3),
                 label: Constant.profile,
               ),
             ],

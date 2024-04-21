@@ -19,10 +19,10 @@ class _BottomNavigationCartState extends State<BottomNavigationCart> {
         preferredSize: Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.cart,
-          actionIcon: Constant.notificationIcon,
+          actionIcon: Constant.icon_notification,
         ),
       ),
-      body: EmptyItemWidget(icon: Constant.emptyCartIcon, text: "Empty Cart"),
+      body: EmptyItemWidget(icon: Constant.icon_emptyCart, text: "Empty Cart"),
     );
   }
 }

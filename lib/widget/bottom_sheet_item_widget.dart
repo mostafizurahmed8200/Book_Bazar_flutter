@@ -1,14 +1,18 @@
 import 'package:book_bazar/constant/constant.dart';
+import 'package:book_bazar/widget/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BottomSheetItemWidget extends StatelessWidget {
   final String bottomSheetBookCover;
   final String bottomSheetBookName;
+  final String bottomSheetBookValue;
+
   const BottomSheetItemWidget(
       {super.key,
       required this.bottomSheetBookCover,
-      required this.bottomSheetBookName});
+      required this.bottomSheetBookName,
+      required this.bottomSheetBookValue});
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +26,18 @@ class BottomSheetItemWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 25.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
               height: 10,
             ),
-            SvgPicture.asset(
-              Constant.bottomSheetBarBg,
-              width: 100,
+            Center(
+              child: SvgPicture.asset(
+                Constant.bottomSheetBarBg,
+                color: Colors.grey,
+                height: 8,
+                width: 100,
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -64,9 +72,103 @@ class BottomSheetItemWidget extends StatelessWidget {
               height: 10,
             ),
             const Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.",
+              Constant.loreposum,
               style: TextStyle(fontSize: 18, color: Colors.grey),
             ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              Constant.review,
+              style: Constant.headerTextStyle,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                SvgPicture.asset(Constant.icon_review),
+                SvgPicture.asset(Constant.icon_review),
+                SvgPicture.asset(Constant.icon_review),
+                SvgPicture.asset(Constant.icon_review),
+                SvgPicture.asset(
+                  Constant.icon_review,
+                  color: Colors.black,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                const Text(
+                  '(4.0)',
+                  style: TextStyle(color: Colors.black, fontSize: 18),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Constant.grey60,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  width: 200,
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SvgPicture.asset(
+                        Constant.icon_minus,
+                        width: 35,
+                        height: 35,
+                      ),
+                      Text(
+                        '1',
+                        style: Constant.headerTextStyle,
+                      ),
+                      SvgPicture.asset(
+                        Constant.icon_plus,
+                        width: 35,
+                        height: 35,
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(
+                  bottomSheetBookValue,
+                  style: const TextStyle(
+                      fontSize: 20,
+                      color: Constant.appColor,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ButtonWidget(
+                    text: Constant.continueShopping,
+                    roundCorner: 30,
+                    backgroundColor: Constant.appColor,
+                    width: MediaQuery.of(context).size.width * .50,
+                    textColor: Colors.white),
+                const Text(
+                  Constant.viewCart,
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Constant.appColor,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
+            )
           ],
         ),
       ),

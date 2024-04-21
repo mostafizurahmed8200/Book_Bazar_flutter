@@ -16,7 +16,7 @@ class CongratulationsPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset(Constant.congratulationsIcon),
+              Image.asset(Constant.icon_congratulations),
               const SizedBox(
                 height: 20,
               ),

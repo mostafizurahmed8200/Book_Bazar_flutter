@@ -40,8 +40,8 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
         preferredSize: const Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.home,
-          leadingIcon: Constant.searchIcon,
-          actionIcon: Constant.notificationIcon,
+          leadingIcon: Constant.icon_search,
+          actionIcon: Constant.icon_notification,
           leadingOnCLickView: () {
             Navigator.pushNamed(context, 'searchPage');
           },

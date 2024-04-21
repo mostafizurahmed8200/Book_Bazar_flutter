@@ -45,8 +45,8 @@ class _BottomNavigationCategoryState extends State<BottomNavigationCategory>
         preferredSize: const Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.category,
-          leadingIcon: Constant.searchIcon,
-          actionIcon: Constant.notificationIcon,
+          leadingIcon: Constant.icon_search,
+          actionIcon: Constant.icon_notification,
           leadingOnCLickView: () {
             Navigator.pushNamed(context, 'searchPage');
           },
