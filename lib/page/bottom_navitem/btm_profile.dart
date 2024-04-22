@@ -15,13 +15,12 @@ class BottomNavigationProfile extends StatefulWidget {
 }
 
 class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
-  late String name;
-  late String phone;
+  late String name = 'Admin';
+  late String phone = '+91 983XXXXXX';
 
   @override
   void initState() {
     super.initState();
-
     fetchData(); // Fetch user data from the database
   }
 
@@ -30,8 +29,8 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
     Map<String, dynamic>? userData = await DBHelper.getUserData();
     if (userData != null) {
       setState(() {
-        name = userData['name'] ?? '';
-        phone = userData['phone'] ?? '';
+        name = userData['name'] ?? 'Admin';
+        phone = userData['phone'] ?? '+91 983XXXXXX';
       });
     }
   }
@@ -75,11 +74,11 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            name,
+                            name.isEmpty ? 'admin' : name,
                             style: Constant.normalTextStyle,
                           ),
                           Text(
-                            '+91 $phone',
+                            phone.isEmpty ? '+91 983XXXXXX' : '+91 $phone',
                             style: Constant.subHeaderTextStyle,
                           ),
                         ],
@@ -130,7 +129,9 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
               ProfileDataWidget(
                 icon: Constant.pr_address,
                 text: Constant.address,
-                onClickItem: () {},
+                onClickItem: () {
+                  Navigator.pushNamed(context, "profileAddress");
+                },
               ),
               const SizedBox(
                 height: 30,
@@ -138,7 +139,9 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
               ProfileDataWidget(
                 icon: Constant.pr_offer,
                 text: Constant.offers,
-                onClickItem: () {},
+                onClickItem: () {
+                  Navigator.pushNamed(context, "");
+                },
               ),
               const SizedBox(
                 height: 30,
@@ -146,7 +149,9 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
               ProfileDataWidget(
                 icon: Constant.pr_favorite,
                 text: Constant.favorite,
-                onClickItem: () {},
+                onClickItem: () {
+                  Navigator.pushNamed(context, "");
+                },
               ),
               const SizedBox(
                 height: 30,
@@ -154,7 +159,9 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
               ProfileDataWidget(
                 icon: Constant.pr_order,
                 text: Constant.orderHistory,
-                onClickItem: () {},
+                onClickItem: () {
+                  Navigator.pushNamed(context, "");
+                },
               ),
               const SizedBox(
                 height: 30,
@@ -162,7 +169,9 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
               ProfileDataWidget(
                 icon: Constant.pr_help,
                 text: Constant.helpCenter,
-                onClickItem: () {},
+                onClickItem: () {
+                  Navigator.pushNamed(context, "");
+                },
               ),
             ],
           ),

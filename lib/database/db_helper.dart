@@ -5,7 +5,8 @@ import '../model/loginflag_model.dart';
 
 class DBHelper {
   static const String loginFlagTbl = 'LoginFlagTbl';
-  static const String userDatatbl = 'UserData';
+  static const String userDatatbl = 'UserDataTbl';
+  static const String addresstbl = 'AddressTbl';
 
   //Create DB and Table
   static Future<Database> database() async {
@@ -20,6 +21,20 @@ class DBHelper {
         //User Data Table
         db.execute(
           "CREATE TABLE ${userDatatbl}(id INTEGER PRIMARY KEY AUTOINCREMENT ,name TEXT, email TEXT, phone TEXT, password TEXT)",
+        );
+
+        //User Data Table
+        db.execute(
+          "CREATE TABLE ${addresstbl}(id INTEGER PRIMARY KEY AUTOINCREMENT ,"
+          " name TEXT,"
+          " email TEXT,"
+          " phone TEXT,"
+          " pincode TEXT,"
+          " state TEXT,"
+          " city TEXT,"
+          " house_number TEXT,"
+          " landmark TEXT,"
+          " chip_data TEXT)",
         );
       },
       version: 1,
@@ -104,5 +119,77 @@ class DBHelper {
         'phone': phone,
       },
     );
+  }
+
+  //Address Feild--
+//Insert-
+  static Future<void> insertOrUpdateAddressTable(
+    String name,
+    String email,
+    String phone,
+    String pincode,
+    String state,
+    String city,
+    String houseNumber,
+    String landmark,
+    String chipData,
+  ) async {
+    final Database db = await database();
+
+    // Check if data already exists based on email or phone number
+    List<Map<String, dynamic>> result = await db.rawQuery(
+      'SELECT * FROM $addresstbl WHERE email = ? OR phone = ?',
+      [email, phone],
+    );
+
+    if (result.isNotEmpty) {
+      // Data already exists, perform update
+      await db.update(
+        addresstbl,
+        {
+          'name': name,
+          'email': email,
+          'phone': phone,
+          'pincode': pincode,
+          'state': state,
+          'city': city,
+          'house_number': houseNumber,
+          'landmark': landmark,
+          'chip_data': chipData,
+        },
+        where: 'email = ? OR phone = ?',
+        whereArgs: [email, phone],
+      );
+    } else {
+      // Data doesn't exist, perform insert
+      await db.insert(
+        addresstbl,
+        {
+          'name': name,
+          'email': email,
+          'phone': phone,
+          'pincode': pincode,
+          'state': state,
+          'city': city,
+          'house_number': houseNumber,
+          'landmark': landmark,
+          'chip_data': chipData,
+        },
+      );
+    }
+  }
+
+  //Retraive address Data
+  static Future<Map<String, dynamic>?> getAddressData() async {
+    final Database db = await database();
+    final List<Map<String, dynamic>> result = await db.query(addresstbl);
+
+    if (result.isNotEmpty) {
+      // If there are rows in the result, return the first row
+      return result[0];
+    } else {
+      // If no rows are found, return null or handle the case accordingly
+      return null;
+    }
   }
 }

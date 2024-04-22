@@ -4,6 +4,7 @@ import 'package:book_bazar/page/home/authors_screen.dart';
 import 'package:book_bazar/page/login_screen.dart';
 import 'package:book_bazar/page/notification_screen.dart';
 import 'package:book_bazar/page/onboardingscreen.dart';
+import 'package:book_bazar/page/profile/pr_address.dart';
 import 'package:book_bazar/page/profile/pr_myaccount.dart';
 import 'package:book_bazar/page/search_screen.dart';
 import 'package:book_bazar/page/signup_screen.dart';
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
           'topOfWeekPage': (context) => const HomeTopOfWeekPage(),
           'authorsPage': (context) => const HomeAuthorsPage(),
           'profileMyAccount': (context) => const ProfileMyAccount(),
+          'profileAddress': (context) => const ProfileAddress(),
           // 'authorsDetailsPage': (context) => const AuthorDetailsPage(),
         });
   }
