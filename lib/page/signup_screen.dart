@@ -1,9 +1,11 @@
+import 'package:book_bazar/%20connection/network_connection.dart';
 import 'package:book_bazar/constant/constant.dart';
 import 'package:book_bazar/constant/dart_algorithm.dart';
 import 'package:book_bazar/constant/utils.dart';
 import 'package:book_bazar/domain/firebase/firebase_createauth.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 
 class SignupPage extends StatefulWidget {
@@ -237,14 +239,26 @@ class _SignupPageState extends State<SignupPage> {
 
                     Future.delayed(
                       const Duration(seconds: 5),
-                      () {
+                      () async {
+                        // final List<ConnectivityResult> connectivityResult =
+                        //     await (Connectivity().checkConnectivity());
+
                         Navigator.of(context).pop();
-                        FirebaseCreateAcAuth.registerUsingEmailPassword(context,
+                        if ((await NetworkUtils.networkCalls())
+                                .contains(ConnectivityResult.mobile) ||
+                            (await NetworkUtils.networkCalls())
+                                .contains(ConnectivityResult.wifi)) {
+                          FirebaseCreateAcAuth.registerUsingEmailPassword(
+                            context,
                             name: controllerName.text,
                             email: controllerEmail.text,
-                            password: controllerPassword.text);
-
-                        Navigator.pushNamed(context, 'congratulationspage');
+                            password: controllerPassword.text,
+                          );
+                          Navigator.pushNamed(context, 'congratulationspage');
+                        } else {
+                          Utils.dialogUtils(context,
+                              'Please check your wifi - internet connection');
+                        }
                       },
                     );
                   }

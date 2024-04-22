@@ -1,9 +1,11 @@
+import 'package:book_bazar/%20connection/network_connection.dart';
 import 'package:book_bazar/database/db_helper.dart';
 import 'package:book_bazar/domain/firebase/firebase_loginauth.dart';
 import 'package:book_bazar/domain/google/google_login.dart';
 import 'package:book_bazar/widget/button_stroke_widget.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -148,11 +150,21 @@ class _LoginPageState extends State<LoginPage> {
 
                       Future.delayed(
                         const Duration(seconds: 5),
-                        () {
+                        () async {
                           Navigator.of(context).pop();
-                          FirebaseLoginAuth.signInWithEmailAndPassword(context,
-                              email: controllerEmail.text,
-                              password: controllerPassword.text);
+
+                          if ((await NetworkUtils.networkCalls())
+                                  .contains(ConnectivityResult.mobile) ||
+                              (await NetworkUtils.networkCalls())
+                                  .contains(ConnectivityResult.wifi)) {
+                            FirebaseLoginAuth.signInWithEmailAndPassword(
+                                context,
+                                email: controllerEmail.text,
+                                password: controllerPassword.text);
+                          } else {
+                            Utils.dialogUtils(context,
+                                'Please check your wifi - internet connection');
+                          }
                         },
                       );
                       final loginFlag = LoginSqlModel(loginFlag: 'LoggedIn');
@@ -233,9 +245,17 @@ class _LoginPageState extends State<LoginPage> {
 
                     Future.delayed(
                       const Duration(seconds: 1),
-                      () {
+                      () async {
                         Navigator.of(context).pop();
-                        GoogleLogin.googleSignIn(context, googleSignIn);
+                        if ((await NetworkUtils.networkCalls())
+                                .contains(ConnectivityResult.mobile) ||
+                            (await NetworkUtils.networkCalls())
+                                .contains(ConnectivityResult.wifi)) {
+                          GoogleLogin.googleSignIn(context, googleSignIn);
+                        } else {
+                          Utils.dialogUtils(context,
+                              'Please check your wifi - internet connection');
+                        }
                       },
                     );
 

@@ -42,6 +42,7 @@ dependencies:
   flutter_svg: ^0.22.0
 #  shared_preferences: ^2.2.3
   sqflite: ^2.3.3
+  connectivity_plus: ^6.0.2
 
 
 dev_dependencies:
