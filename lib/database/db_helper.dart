@@ -80,7 +80,6 @@ class DBHelper {
     String name,
     String email,
     String phone,
-    String password,
   ) async {
     final Database db = await database();
 
@@ -97,7 +96,6 @@ class DBHelper {
           'name': name,
           'email': email,
           'phone': phone,
-          'password': password,
         },
       );
     } else {
@@ -106,8 +104,8 @@ class DBHelper {
         userDatatbl,
         {
           'name': name,
+          'email': email,
           'phone': phone,
-          'password': password,
         },
       );
     }

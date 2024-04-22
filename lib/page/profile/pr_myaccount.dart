@@ -164,7 +164,7 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                 width: MediaQuery.of(context).size.width * 1,
                 textColor: Colors.white,
                 onCLickButton: () async {
-                  await DBHelper.updateUserDataTable(
+                  await DBHelper.insertOrUpdateUserDataTable(
                     _nameController.text,
                     _emailController.text,
                     _phoneController.text,
