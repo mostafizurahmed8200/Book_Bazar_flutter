@@ -136,6 +136,7 @@ class _LoginPageState extends State<LoginPage> {
                     )) {
                       showDialog(
                         context: context,
+                        barrierDismissible: false,
                         builder: (BuildContext context) {
                           return const AlertDialog(
                             content: CircleAvatar(
@@ -230,6 +231,7 @@ class _LoginPageState extends State<LoginPage> {
                   textColor: Colors.black,
                   onCLickButton: () async {
                     showDialog(
+                      barrierDismissible: false,
                       context: context,
                       builder: (BuildContext context) {
                         return const AlertDialog(

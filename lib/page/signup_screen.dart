@@ -225,6 +225,7 @@ class _SignupPageState extends State<SignupPage> {
                   )) {
                     showDialog(
                       context: context,
+                      barrierDismissible: false,
                       builder: (BuildContext context) {
                         return const AlertDialog(
                           content: CircleAvatar(

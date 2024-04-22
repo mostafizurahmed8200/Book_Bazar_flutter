@@ -5,6 +5,7 @@ class Utils {
   static dialogUtils(BuildContext context, String message) {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(

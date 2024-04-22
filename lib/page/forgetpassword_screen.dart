@@ -84,6 +84,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                 onCLickButton: () {
                   if (isValidation(context, getEmailText)) {
                     showDialog(
+                      barrierDismissible: false,
                       context: context,
                       builder: (BuildContext context) {
                         return const AlertDialog(
