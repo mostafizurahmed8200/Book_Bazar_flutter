@@ -10,6 +10,7 @@ class FirebaseCreateAcAuth {
     required String name,
     required String email,
     required String password,
+    required String phoneNumber,
   }) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
@@ -32,12 +33,10 @@ class FirebaseCreateAcAuth {
           'uid': userCredential.user!.uid,
           'name': name,
           'email': email,
+          'phone': phoneNumber,
           'password': password, // Store the encoded password
         },
       );
-
-      print("Credential--->"
-          'name $name \n Email $email \n password $password');
 
       print("Credential--->"
           'name $name \n Email $email \n password $password');

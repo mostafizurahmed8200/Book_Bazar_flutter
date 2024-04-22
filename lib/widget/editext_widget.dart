@@ -9,6 +9,7 @@ class EditTextWidget extends StatelessWidget {
   final int? maxLength;
   final ValueChanged<String>? onChanged;
   final TextEditingController? controller;
+  final TextInputType? keywordType;
 
   const EditTextWidget(
       {super.key,
@@ -19,7 +20,8 @@ class EditTextWidget extends StatelessWidget {
       required this.isAutocorrect,
       this.maxLength,
       this.onChanged,
-      this.controller});
+      this.controller,
+      this.keywordType});
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +42,7 @@ class EditTextWidget extends StatelessWidget {
           enableSuggestions: isEnableSuggestion,
           autocorrect: isAutocorrect,
           maxLength: maxLength,
+          keyboardType: keywordType,
           decoration: InputDecoration(
             counterText: "",
             border: InputBorder.none,

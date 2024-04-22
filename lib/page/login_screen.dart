@@ -30,6 +30,13 @@ class _LoginPageState extends State<LoginPage> {
   String getPassword = '';
 
   @override
+  void dispose() {
+    controllerEmail.dispose();
+    controllerPassword.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
@@ -169,7 +176,7 @@ class _LoginPageState extends State<LoginPage> {
                         },
                       );
                       final loginFlag = LoginSqlModel(loginFlag: 'LoggedIn');
-                      await DBHelper.insertSaladTable(loginFlag);
+                      await DBHelper.insertLoginFlagTable(loginFlag);
                     }
                   },
                 ),
@@ -262,7 +269,7 @@ class _LoginPageState extends State<LoginPage> {
                     );
 
                     final loginFlag = LoginSqlModel(loginFlag: 'LoggedIn');
-                    await DBHelper.insertSaladTable(loginFlag);
+                    await DBHelper.insertLoginFlagTable(loginFlag);
                   },
                 ),
                 const SizedBox(
@@ -275,7 +282,14 @@ class _LoginPageState extends State<LoginPage> {
                   height: 50,
                   width: MediaQuery.of(context).size.width * .90,
                   textColor: Colors.black,
-                  onCLickButton: () {},
+                  onCLickButton: () {
+                    if (Utils.isIOS()) {
+                      print('login');
+                    } else {
+                      Utils.dialogUtils(context,
+                          'Opps! Android Device Detected.\n Please install this application on iPhone Device');
+                    }
+                  },
                 ),
               ],
             ),

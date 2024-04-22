@@ -3,6 +3,7 @@ import 'package:book_bazar/widget/profile_data_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../constant/constant.dart';
+import '../../database/db_helper.dart';
 import '../../widget/appbar_widget.dart';
 
 class BottomNavigationProfile extends StatefulWidget {
@@ -14,6 +15,27 @@ class BottomNavigationProfile extends StatefulWidget {
 }
 
 class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
+  late String name;
+  late String phone;
+
+  @override
+  void initState() {
+    super.initState();
+
+    fetchData(); // Fetch user data from the database
+  }
+
+  // Fetch user data from the database
+  void fetchData() async {
+    Map<String, dynamic>? userData = await DBHelper.getUserData();
+    if (userData != null) {
+      setState(() {
+        name = userData['name'] ?? '';
+        phone = userData['phone'] ?? '';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,11 +75,11 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'AHMED',
+                            name,
                             style: Constant.normalTextStyle,
                           ),
                           Text(
-                            '+91 9233443434',
+                            '+91 $phone',
                             style: Constant.subHeaderTextStyle,
                           ),
                         ],
@@ -98,7 +120,9 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
               ProfileDataWidget(
                 icon: Constant.pr_person,
                 text: Constant.myAccount,
-                onClickItem: () {},
+                onClickItem: () {
+                  Navigator.pushNamed(context, "profileMyAccount");
+                },
               ),
               const SizedBox(
                 height: 30,

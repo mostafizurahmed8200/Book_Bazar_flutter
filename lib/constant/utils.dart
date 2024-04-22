@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:book_bazar/constant/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -51,5 +53,13 @@ class Utils {
         );
       },
     );
+  }
+
+  static bool isIOS() {
+    return Platform.isIOS;
+  }
+
+  static bool isAndroid() {
+    return Platform.isAndroid;
   }
 }

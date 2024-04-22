@@ -2,6 +2,7 @@ import 'package:book_bazar/%20connection/network_connection.dart';
 import 'package:book_bazar/constant/constant.dart';
 import 'package:book_bazar/constant/dart_algorithm.dart';
 import 'package:book_bazar/constant/utils.dart';
+import 'package:book_bazar/database/db_helper.dart';
 import 'package:book_bazar/domain/firebase/firebase_createauth.dart';
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:book_bazar/widget/editext_widget.dart';
@@ -18,15 +19,26 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   TextEditingController controllerName = TextEditingController();
   TextEditingController controllerEmail = TextEditingController();
+  TextEditingController controllerPhoneNumber = TextEditingController();
   TextEditingController controllerPassword = TextEditingController();
 
   String getName = '';
   String getEmailText = ''; //Email Text
+  String getPhonNumberText = ''; //Email Text
   String getPassword = '';
 
   String getPasswordText8 = '';
   String getPasswordTextAtleast1number = '';
   String getPasswordTextAtleastLowercase = '';
+
+  @override
+  void dispose() {
+    controllerName.dispose();
+    controllerEmail.dispose();
+    controllerPhoneNumber.dispose();
+    controllerPassword.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +73,7 @@ class _SignupPageState extends State<SignupPage> {
               const SizedBox(
                 height: 20,
               ),
+              //Name
               Text(
                 'Name',
                 style: Constant.normalTextStyle,
@@ -79,6 +92,8 @@ class _SignupPageState extends State<SignupPage> {
                   getName = controllerName.text;
                 },
               ),
+
+              //Email
               const SizedBox(
                 height: 10,
               ),
@@ -102,6 +117,36 @@ class _SignupPageState extends State<SignupPage> {
                   });
                 },
               ),
+
+              //Phone Number-
+
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                'Phone Number',
+                style: Constant.normalTextStyle,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              EditTextWidget(
+                hintText: 'Your Phone number',
+                keywordType: TextInputType.phone,
+                prefixIcon: Icons.phone,
+                isAutocorrect: false,
+                maxLength: 10,
+                isEnableSuggestion: true,
+                isObscureText: false,
+                controller: controllerPhoneNumber,
+                onChanged: (String value) {
+                  setState(() {
+                    getPhonNumberText = controllerPhoneNumber.text.toString();
+                  });
+                },
+              ),
+
+              //Password
               const SizedBox(
                 height: 10,
               ),
@@ -218,6 +263,7 @@ class _SignupPageState extends State<SignupPage> {
                     context,
                     getName,
                     getEmailText,
+                    getPhonNumberText,
                     getPassword,
                     getPasswordTextAtleast1number,
                     getPasswordTextAtleastLowercase,
@@ -254,7 +300,15 @@ class _SignupPageState extends State<SignupPage> {
                             name: controllerName.text,
                             email: controllerEmail.text,
                             password: controllerPassword.text,
+                            phoneNumber: controllerPhoneNumber.text,
                           );
+                          //Insert Table-
+                          await DBHelper.insertUserDataTable(
+                              controllerName.text,
+                              controllerEmail.text,
+                              controllerPhoneNumber.text,
+                              controllerPassword.text);
+
                           Navigator.pushNamed(context, 'congratulationspage');
                         } else {
                           Utils.dialogUtils(context,
@@ -317,6 +371,7 @@ class _SignupPageState extends State<SignupPage> {
     BuildContext context,
     String name,
     String emailText,
+    String phonNumberText,
     String passwordText,
     String atleast1number,
     String atleasetLowerUperCase,
@@ -330,6 +385,9 @@ class _SignupPageState extends State<SignupPage> {
       return false;
     } else if (!Expression.containsAtEmailSymbol(emailText)) {
       Utils.dialogUtils(context, "Please enter valid Email Address");
+      return false;
+    } else if (phonNumberText.isEmpty) {
+      Utils.dialogUtils(context, "Please Enter your phone number");
       return false;
     } else if (passwordText.isEmpty) {
       Utils.dialogUtils(context, "Please Create Password");
