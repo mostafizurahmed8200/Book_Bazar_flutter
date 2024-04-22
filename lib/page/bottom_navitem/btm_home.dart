@@ -248,9 +248,9 @@ Widget _buildTopOfWeekBook() => ListView.builder(
 Widget _buildBestVendors() => ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
-      itemCount: ModelBestVendors.topOfWeekList.length,
+      itemCount: ModelBestVendors.bestVendorList.length,
       itemBuilder: (context, index) {
-        final allItem = ModelBestVendors.topOfWeekList[index];
+        final allItem = ModelBestVendors.bestVendorList[index];
         return CardWidgetBestVendors(infoModel: allItem);
       },
     );
@@ -259,9 +259,9 @@ Widget _buildBestVendors() => ListView.builder(
 Widget _buildAuthor() => ListView.builder(
       shrinkWrap: true,
       scrollDirection: Axis.horizontal,
-      itemCount: ModelAuthors.topOfWeekList.length,
+      itemCount: ModelAuthors.authorList.length,
       itemBuilder: (context, index) {
-        final allItem = ModelAuthors.topOfWeekList[index];
+        final allItem = ModelAuthors.authorList[index];
         return CardWidgetAuthor(infoModel: allItem);
       },
     );

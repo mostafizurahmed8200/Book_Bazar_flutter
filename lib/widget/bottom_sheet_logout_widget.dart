@@ -75,12 +75,17 @@ class BottomSheetLogoutWidget extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  const Text(
-                    Constant.cancel,
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Constant.appColor,
-                        fontWeight: FontWeight.w500),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text(
+                      Constant.cancel,
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Constant.appColor,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ],
               ),

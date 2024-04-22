@@ -18,7 +18,7 @@ class CardWidgetBestVendors extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Image.asset(
-            infoModel.bookCover,
+            infoModel.vendorCover,
             // fit: BoxFit.fill,
 
             width: 100,

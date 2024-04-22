@@ -1,39 +1,44 @@
 import 'package:book_bazar/constant/constant.dart';
 
 class ModelBestVendors {
-  final String bookCover;
+  final String vendorCover;
+  final String vendorName;
 
   ModelBestVendors({
-    required this.bookCover,
+    required this.vendorCover,
+    required this.vendorName,
   });
 
-  static List<ModelBestVendors> topOfWeekList = [
+  static List<ModelBestVendors> bestVendorList = [
     ModelBestVendors(
-      bookCover: Constant.vendor1,
+      vendorCover: Constant.vendor1,
+      vendorName: 'Wattpad book',
+    ),
+    ModelBestVendors(vendorCover: Constant.vendor2, vendorName: 'Kuromi'),
+    ModelBestVendors(
+      vendorCover: Constant.vendor3,
+      vendorName: 'Cranel & Co',
+    ),
+    ModelBestVendors(vendorCover: Constant.vendor4, vendorName: "GooDay"),
+    ModelBestVendors(
+      vendorCover: Constant.vendor5,
+      vendorName: 'Warehouse',
     ),
     ModelBestVendors(
-      bookCover: Constant.vendor2,
+      vendorCover: Constant.vendor6,
+      vendorName: 'Peppa Pig',
     ),
     ModelBestVendors(
-      bookCover: Constant.vendor3,
+      vendorCover: Constant.vendor7,
+      vendorName: 'Jstor',
     ),
     ModelBestVendors(
-      bookCover: Constant.vendor4,
+      vendorCover: Constant.vendor8,
+      vendorName: "Peloton",
     ),
     ModelBestVendors(
-      bookCover: Constant.vendor5,
-    ),
-    ModelBestVendors(
-      bookCover: Constant.vendor6,
-    ),
-    ModelBestVendors(
-      bookCover: Constant.vendor7,
-    ),
-    ModelBestVendors(
-      bookCover: Constant.vendor8,
-    ),
-    ModelBestVendors(
-      bookCover: Constant.vendor9,
+      vendorCover: Constant.vendor9,
+      vendorName: 'Haymarket',
     ),
   ];
 }

@@ -61,6 +61,7 @@ class MyApp extends StatelessWidget {
           'bestVendorPage': (context) => const HomeBestVendorPage(),
           'topOfWeekPage': (context) => const HomeTopOfWeekPage(),
           'authorsPage': (context) => const HomeAuthorsPage(),
+          // 'authorsDetailsPage': (context) => const AuthorDetailsPage(),
         });
   }
 }
