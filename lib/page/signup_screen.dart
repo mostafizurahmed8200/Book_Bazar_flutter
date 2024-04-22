@@ -303,7 +303,7 @@ class _SignupPageState extends State<SignupPage> {
                             phoneNumber: controllerPhoneNumber.text,
                           );
                           //Insert Table-
-                          await DBHelper.insertUserDataTable(
+                          await DBHelper.insertOrUpdateUserDataTable(
                               controllerName.text,
                               controllerEmail.text,
                               controllerPhoneNumber.text,

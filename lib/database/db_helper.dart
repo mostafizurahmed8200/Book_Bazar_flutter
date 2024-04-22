@@ -76,20 +76,41 @@ class DBHelper {
 
   //User Data--->
   //Insert User Data Table
-  static Future<void> insertUserDataTable(
-      String name, String email, String phone, String password) async {
+  static Future<void> insertOrUpdateUserDataTable(
+    String name,
+    String email,
+    String phone,
+    String password,
+  ) async {
     final Database db = await database();
 
-    await db.insert(
-      userDatatbl,
-      {
-        'name': name,
-        'email': email,
-        'phone': phone,
-        'password': password,
-      },
-      conflictAlgorithm: ConflictAlgorithm.replace,
+    // Check if data already exists based on email or phone number
+    List<Map<String, dynamic>> result = await db.rawQuery(
+      'SELECT * FROM $userDatatbl',
     );
+
+    if (result.isEmpty) {
+      // Table is empty, perform insert
+      await db.insert(
+        userDatatbl,
+        {
+          'name': name,
+          'email': email,
+          'phone': phone,
+          'password': password,
+        },
+      );
+    } else {
+      // Data exists, perform update
+      await db.update(
+        userDatatbl,
+        {
+          'name': name,
+          'phone': phone,
+          'password': password,
+        },
+      );
+    }
   }
 
 // Retrieve user data from the UserData table
