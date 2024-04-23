@@ -2,7 +2,7 @@ import 'package:book_bazar/constant/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../model/model_bestvendors.dart';
+import '../../model/model_bestvendors.dart';
 
 class CardWidgetBestVendorsSeeAll extends StatelessWidget {
   final ModelBestVendors infoModel;

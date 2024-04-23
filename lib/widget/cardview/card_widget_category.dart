@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../constant/constant.dart';
-import '../model/model_category.dart';
-import 'bottom_sheet_item_widget.dart';
+import '../../constant/constant.dart';
+import '../../model/model_category.dart';
+import '../bottom_sheet/bottom_sheet_item_widget.dart';
 
 class CardWidgetCategory extends StatelessWidget {
   final ModelCategory infoModel;

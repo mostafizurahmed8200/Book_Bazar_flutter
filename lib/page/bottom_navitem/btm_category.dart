@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../constant/constant.dart';
 import '../../model/model_category.dart';
 import '../../widget/appbar_widget.dart';
-import '../../widget/card_widget_category.dart';
+import '../../widget/cardview/card_widget_category.dart';
 import '../../widget/sliver_gridview_widget.dart';
 
 class BottomNavigationCategory extends StatefulWidget {

@@ -4,11 +4,11 @@ import 'package:book_bazar/model/model_bestvendors.dart';
 import 'package:book_bazar/model/model_top_of_week.dart';
 import 'package:book_bazar/widget/appbar_widget.dart';
 import 'package:book_bazar/widget/button_widget.dart';
-import 'package:book_bazar/widget/card_widget_author.dart';
-import 'package:book_bazar/widget/card_widget_bestvendors.dart';
+import 'package:book_bazar/widget/cardview/card_widget_author.dart';
 import 'package:flutter/material.dart';
 
-import '../../widget/card_widget_top_of_week.dart';
+import '../../widget/cardview/card_widget_bestvendors.dart';
+import '../../widget/cardview/card_widget_top_of_week.dart';
 import '../../widget/dot_indicator.dart';
 
 class BottomNavigationHome extends StatefulWidget {

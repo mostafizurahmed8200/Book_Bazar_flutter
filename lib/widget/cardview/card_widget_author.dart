@@ -2,7 +2,7 @@ import 'package:book_bazar/constant/constant.dart';
 import 'package:book_bazar/model/model_authors.dart';
 import 'package:flutter/material.dart';
 
-import '../page/author_details_screen.dart';
+import '../../page/author_details_screen.dart';
 
 class CardWidgetAuthor extends StatelessWidget {
   final ModelAuthors infoModel;

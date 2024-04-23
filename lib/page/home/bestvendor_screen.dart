@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../constant/constant.dart';
 import '../../widget/appbar_widget.dart';
-import '../../widget/card_widget_bestvendors_see_all.dart';
+import '../../widget/cardview/card_widget_bestvendors_see_all.dart';
 import '../../widget/sliver_gridview_widget.dart';
 
 class HomeBestVendorPage extends StatefulWidget {

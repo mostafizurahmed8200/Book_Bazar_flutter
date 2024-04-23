@@ -1,8 +1,8 @@
 import 'package:book_bazar/constant/constant.dart';
 import 'package:flutter/material.dart';
 
-import '../model/model_top_of_week.dart';
-import 'bottom_sheet_item_widget.dart';
+import '../../model/model_top_of_week.dart';
+import '../bottom_sheet/bottom_sheet_item_widget.dart';
 
 class CardWidgetTopOfWeek extends StatelessWidget {
   final ModelTopOfWeek infoModel;

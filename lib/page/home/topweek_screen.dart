@@ -1,9 +1,9 @@
 import 'package:book_bazar/model/model_category.dart';
-import 'package:book_bazar/widget/card_widget_category.dart';
 import 'package:flutter/material.dart';
 
 import '../../constant/constant.dart';
 import '../../widget/appbar_widget.dart';
+import '../../widget/cardview/card_widget_category.dart';
 import '../../widget/sliver_gridview_widget.dart';
 
 class HomeTopOfWeekPage extends StatefulWidget {

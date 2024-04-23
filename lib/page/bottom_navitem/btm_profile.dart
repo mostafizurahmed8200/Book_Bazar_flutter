@@ -1,10 +1,10 @@
-import 'package:book_bazar/widget/bottom_sheet_logout_widget.dart';
 import 'package:book_bazar/widget/profile_data_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../constant/constant.dart';
 import '../../database/db_helper.dart';
 import '../../widget/appbar_widget.dart';
+import '../../widget/bottom_sheet/bottom_sheet_logout_widget.dart';
 
 class BottomNavigationProfile extends StatefulWidget {
   const BottomNavigationProfile({super.key});

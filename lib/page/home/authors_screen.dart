@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../constant/constant.dart';
 import '../../widget/appbar_widget.dart';
-import '../../widget/card_widget_author_see_all.dart';
+import '../../widget/cardview/card_widget_author_see_all.dart';
 
 class HomeAuthorsPage extends StatefulWidget {
   const HomeAuthorsPage({super.key});

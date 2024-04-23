@@ -1,7 +1,7 @@
 import 'package:book_bazar/constant/constant.dart';
 import 'package:flutter/material.dart';
 
-import '../model/model_bestvendors.dart';
+import '../../model/model_bestvendors.dart';
 
 class CardWidgetBestVendors extends StatelessWidget {
   final ModelBestVendors infoModel;
