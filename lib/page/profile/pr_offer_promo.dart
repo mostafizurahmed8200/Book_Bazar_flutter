@@ -1,4 +1,4 @@
-import 'package:book_bazar/widget/offer_promos_widget.dart';
+import 'package:book_bazar/widget/card_widget_offer_promos.dart';
 import 'package:flutter/material.dart';
 
 import '../../constant/constant.dart';
