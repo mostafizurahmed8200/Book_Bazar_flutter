@@ -17,6 +17,7 @@ import 'page/forgetpassword_screen.dart';
 import 'page/home/bestvendor_screen.dart';
 import 'page/home/topweek_screen.dart';
 import 'page/home_screen.dart';
+import 'page/profile/pr_offer_promo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
           'authorsPage': (context) => const HomeAuthorsPage(),
           'profileMyAccount': (context) => const ProfileMyAccount(),
           'profileAddress': (context) => const ProfileAddress(),
+          'profileOffer': (context) => const ProfileOfferPromo(),
           // 'authorsDetailsPage': (context) => const AuthorDetailsPage(),
         });
   }

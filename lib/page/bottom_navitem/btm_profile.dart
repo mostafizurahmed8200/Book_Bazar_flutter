@@ -140,7 +140,7 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                 icon: Constant.pr_offer,
                 text: Constant.offers,
                 onClickItem: () {
-                  Navigator.pushNamed(context, "");
+                  Navigator.pushNamed(context, "profileOffer");
                 },
               ),
               const SizedBox(
