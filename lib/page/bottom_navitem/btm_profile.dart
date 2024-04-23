@@ -130,7 +130,7 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                 icon: Constant.pr_address,
                 text: Constant.address,
                 onClickItem: () {
-                  Navigator.pushNamed(context, "profileAddress");
+                  Navigator.pushNamed(context, "profileAddressMain");
                 },
               ),
               const SizedBox(

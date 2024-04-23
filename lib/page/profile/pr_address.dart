@@ -390,6 +390,10 @@ class _ProfileAddressState extends State<ProfileAddress> {
                         _landmarkController.text,
                         chipText.toString());
                     Utils.dialogUtils(context, 'Address Save  Successfully');
+                    Navigator.pushNamed(
+                      context,
+                      'profileAddressMain',
+                    );
                   }
                 },
               ),

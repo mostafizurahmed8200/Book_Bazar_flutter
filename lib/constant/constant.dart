@@ -75,10 +75,12 @@ class Constant {
   static const bottomSheetBarBg = 'image/btm_sheet_bar.svg';
   static const icon_emails = 'image/icon_emails.svg';
   static const icon_phones = 'image/icon_phones.svg';
+  static const icon_targetlocation = 'image/icon_targetlocation.svg';
 
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
   static const Color appLightTrnsColor = Color(0xFFF3F3F3);
+  static const Color appColorLight = Color(0xC254408C);
   static const Color grey50 = Color(0xFFFAFAFA);
   static const Color grey500 = Color(0xFFA6A6A6);
   static const Color grey60 = Color.fromARGB(255, 242, 242, 247);
