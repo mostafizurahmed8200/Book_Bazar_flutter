@@ -89,9 +89,12 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(
-                      'Change Profile',
-                      style: Constant.normalTextStyle,
+                    GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        'Change Profile',
+                        style: Constant.normalTextStyle,
+                      ),
                     ),
                   ],
                 ),
