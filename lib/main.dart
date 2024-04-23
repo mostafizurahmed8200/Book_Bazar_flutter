@@ -5,6 +5,7 @@ import 'package:book_bazar/page/login_screen.dart';
 import 'package:book_bazar/page/notification_screen.dart';
 import 'package:book_bazar/page/onboardingscreen.dart';
 import 'package:book_bazar/page/profile/pr_address.dart';
+import 'package:book_bazar/page/profile/pr_helpcenter.dart';
 import 'package:book_bazar/page/profile/pr_myaccount.dart';
 import 'package:book_bazar/page/search_screen.dart';
 import 'package:book_bazar/page/signup_screen.dart';
@@ -67,6 +68,7 @@ class MyApp extends StatelessWidget {
           'profileMyAccount': (context) => const ProfileMyAccount(),
           'profileAddress': (context) => const ProfileAddress(),
           'profileOffer': (context) => const ProfileOfferPromo(),
+          'profileHelpCenter': (context) => const ProfileHelpCenter(),
           // 'authorsDetailsPage': (context) => const AuthorDetailsPage(),
         });
   }

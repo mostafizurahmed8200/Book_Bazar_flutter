@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../constant/constant.dart';
-
 class AppBarWidget extends StatelessWidget {
   final String? title;
   final String? leadingIcon;
   final String? actionIcon;
   final Function? leadingOnCLickView;
+  final Color leadingColor; // Make leadingColor non-nullable and final
+  final Color titleColor; // Make leadingColor non-nullable and final
 
   const AppBarWidget({
     super.key,
@@ -15,6 +15,8 @@ class AppBarWidget extends StatelessWidget {
     this.leadingIcon,
     this.actionIcon,
     this.leadingOnCLickView,
+    this.leadingColor = Colors.black54, // Provide a default value here
+    this.titleColor = Colors.black, // Provide a default value here
   });
 
   @override
@@ -40,7 +42,7 @@ class AppBarWidget extends StatelessWidget {
                         leadingIcon!,
                         width: 25,
                         height: 25,
-                        color: Colors.black54,
+                        color: leadingColor,
                       ),
                     ),
                   if (title != null)
@@ -49,7 +51,10 @@ class AppBarWidget extends StatelessWidget {
                         child: Text(
                           title!,
                           textAlign: TextAlign.center,
-                          style: Constant.headerTextStyle,
+                          style: TextStyle(
+                              fontSize: 27,
+                              color: titleColor,
+                              fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),

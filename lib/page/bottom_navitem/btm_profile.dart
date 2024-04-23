@@ -38,8 +38,8 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
-        preferredSize: Size.fromHeight(Constant.appbarSize),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.profile,
         ),
@@ -170,7 +170,7 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                 icon: Constant.pr_help,
                 text: Constant.helpCenter,
                 onClickItem: () {
-                  Navigator.pushNamed(context, "");
+                  Navigator.pushNamed(context, "profileHelpCenter");
                 },
               ),
             ],

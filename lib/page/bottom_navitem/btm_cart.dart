@@ -14,15 +14,16 @@ class BottomNavigationCart extends StatefulWidget {
 class _BottomNavigationCartState extends State<BottomNavigationCart> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(Constant.appbarSize),
+        preferredSize: const Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.cart,
           actionIcon: Constant.icon_notification,
         ),
       ),
-      body: EmptyItemWidget(icon: Constant.icon_emptyCart, text: "Empty Cart"),
+      body: const EmptyItemWidget(
+          icon: Constant.icon_emptyCart, text: "Empty Cart"),
     );
   }
 }

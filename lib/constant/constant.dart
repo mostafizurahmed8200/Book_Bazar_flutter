@@ -73,6 +73,8 @@ class Constant {
 
   //extra
   static const bottomSheetBarBg = 'image/btm_sheet_bar.svg';
+  static const icon_emails = 'image/icon_emails.svg';
+  static const icon_phones = 'image/icon_phones.svg';
 
   //Color Section-
   static const Color appColor = Color(0xFF54408C);
