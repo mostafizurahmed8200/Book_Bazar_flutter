@@ -35,6 +35,7 @@ class CardWidgetTopOfWeek extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(3.0),
         child: SizedBox(
+          height: 238,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

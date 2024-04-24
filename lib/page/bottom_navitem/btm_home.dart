@@ -110,7 +110,7 @@ class _BottomNavigationHomeState extends State<BottomNavigationHome> {
                 height: 10,
               ),
               SizedBox(
-                height: 238,
+                height: MediaQuery.of(context).size.height * .27,
                 child: _buildTopOfWeekBook(),
               ),
               const SizedBox(

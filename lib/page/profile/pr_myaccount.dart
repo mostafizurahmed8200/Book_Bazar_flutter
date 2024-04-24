@@ -172,6 +172,19 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                     _emailController.text,
                     _phoneController.text,
                   );
+
+                  await DBHelper.insertOrUpdateAddressTable(
+                    _nameController.text,
+                    _emailController.text,
+                    _phoneController.text,
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                    '',
+                  );
+
                   Utils.dialogUtils(context, 'Data Update Successfully');
                 },
               )
