@@ -267,7 +267,7 @@ bool isValidate(
   } else if (_email.text.isEmpty) {
     Utils.dialogUtils(context, 'Please Enter Email Address');
     return false;
-  } else if (_phone.text.isEmpty) {
+  } else if (_phone.text.isEmpty && _phone.text.length < 10) {
     Utils.dialogUtils(context, 'Please Enter Phone number');
     return false;
   }
