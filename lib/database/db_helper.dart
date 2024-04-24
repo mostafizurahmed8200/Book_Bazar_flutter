@@ -20,7 +20,7 @@ class DBHelper {
 
         //User Data Table
         db.execute(
-          "CREATE TABLE ${userDatatbl}(id INTEGER PRIMARY KEY AUTOINCREMENT ,name TEXT, email TEXT, phone TEXT, password TEXT)",
+          "CREATE TABLE ${userDatatbl}(id INTEGER PRIMARY KEY AUTOINCREMENT ,name TEXT, email TEXT, phone TEXT, password TEXT, image_path TEXT)",
         );
 
         //User Data Table
@@ -80,6 +80,7 @@ class DBHelper {
     String name,
     String email,
     String phone,
+    String image_path,
   ) async {
     final Database db = await database();
 
@@ -96,6 +97,7 @@ class DBHelper {
           'name': name,
           'email': email,
           'phone': phone,
+          'image_path': image_path,
         },
       );
     } else {
@@ -106,6 +108,7 @@ class DBHelper {
           'name': name,
           'email': email,
           'phone': phone,
+          'image_path': image_path,
         },
       );
     }

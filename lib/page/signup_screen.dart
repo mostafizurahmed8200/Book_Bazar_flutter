@@ -304,10 +304,10 @@ class _SignupPageState extends State<SignupPage> {
                           );
                           //Insert Table-
                           await DBHelper.insertOrUpdateUserDataTable(
-                            controllerName.text,
-                            controllerEmail.text,
-                            controllerPhoneNumber.text,
-                          );
+                              controllerName.text,
+                              controllerEmail.text,
+                              controllerPhoneNumber.text,
+                              '');
 
                           Navigator.pushNamed(context, 'congratulationspage');
                         } else {

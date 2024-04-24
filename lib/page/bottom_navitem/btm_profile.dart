@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:book_bazar/widget/profile_data_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,7 @@ class BottomNavigationProfile extends StatefulWidget {
 class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
   late String name = 'Admin';
   late String phone = '+91 983XXXXXX';
+  String? imagePathDB;
 
   @override
   void initState() {
@@ -31,6 +34,7 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
       setState(() {
         name = userData['name'] ?? 'Admin';
         phone = userData['phone'] ?? '+91 983XXXXXX';
+        imagePathDB = userData['image_path'] ?? Constant.author2;
       });
     }
   }
@@ -38,8 +42,8 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(Constant.appbarSize),
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(Constant.appbarSize),
         child: AppBarWidget(
           title: Constant.profile,
         ),
@@ -59,9 +63,9 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       ClipOval(
-                        child: Image.asset(
+                        child: Image.file(
+                          File(imagePathDB.toString()),
                           fit: BoxFit.cover,
-                          Constant.author1,
                           width: 60,
                           height: 60,
                         ),

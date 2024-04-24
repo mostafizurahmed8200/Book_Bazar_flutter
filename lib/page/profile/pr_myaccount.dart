@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../constant/constant.dart';
 import '../../constant/utils.dart';
@@ -18,6 +22,38 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
   late TextEditingController _nameController;
   late TextEditingController _emailController;
   late TextEditingController _phoneController;
+  File? _selectedImage;
+  String? imagePath;
+  String? imagePathDB;
+
+  Future<void> _pickImage() async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+    if (image != null) {
+      setState(() {
+        _selectedImage = File(image.path);
+        imagePath = image.path;
+        print('ImagePathFile-- $_selectedImage');
+        print('ImagePath-- ${imagePath}');
+      });
+    }
+  }
+
+  Future<void> _requestStoragePermission() async {
+    final status = await Permission.storage.request();
+
+    if (status.isGranted) {
+      // Open the gallery to pick an image
+      await _pickImage();
+    } else if (status.isDenied) {
+      // Show a message to the user explaining why the permission is needed
+      Utils.dialogUtils(context,
+          'Storage permission is required to change your profile picture.');
+    } else if (status.isPermanentlyDenied) {
+      // Open the app settings so the user can manually grant the permission
+      openAppSettings();
+    }
+  }
 
   @override
   void initState() {
@@ -46,8 +82,10 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
         _nameController.text = userData['name'] ?? '';
         _emailController.text = userData['email'] ?? '';
         _phoneController.text = userData['phone'] ?? '';
+        imagePathDB = userData['image_path'] ?? Constant.author2;
       });
     }
+    //For Profile Image--
   }
 
   @override
@@ -79,18 +117,28 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     ClipOval(
-                      child: Image.asset(
-                        fit: BoxFit.fill,
-                        Constant.author1,
-                        width: 100,
-                        height: 100,
-                      ),
+                      child: _selectedImage != null
+                          ? Image.file(
+                              _selectedImage!,
+                              fit: BoxFit.fill,
+                              width: 100,
+                              height: 100,
+                            )
+                          : Image.file(
+                              File(imagePathDB
+                                  .toString()), // Assuming Constant.author2 contains the asset name
+                              fit: BoxFit.fill,
+                              width: 100,
+                              height: 100,
+                            ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () async {
+                        await _requestStoragePermission();
+                      },
                       child: Text(
                         'Change Profile',
                         style: Constant.normalTextStyle,
@@ -171,6 +219,7 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                     _nameController.text,
                     _emailController.text,
                     _phoneController.text,
+                    imagePath.toString(),
                   );
 
                   await DBHelper.insertOrUpdateAddressTable(
