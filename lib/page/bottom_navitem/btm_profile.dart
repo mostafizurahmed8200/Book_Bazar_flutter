@@ -63,12 +63,19 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       ClipOval(
-                        child: Image.file(
-                          File(imagePathDB.toString()),
-                          fit: BoxFit.cover,
-                          width: 60,
-                          height: 60,
-                        ),
+                        child: imagePathDB != null
+                            ? Image.file(
+                                File(imagePathDB.toString()),
+                                fit: BoxFit.cover,
+                                width: 60,
+                                height: 60,
+                              )
+                            : Image.asset(
+                                Constant.author2,
+                                fit: BoxFit.cover,
+                                width: 60,
+                                height: 60,
+                              ),
                       ),
                       const SizedBox(
                         width: 15,

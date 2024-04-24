@@ -124,13 +124,20 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                               width: 100,
                               height: 100,
                             )
-                          : Image.file(
-                              File(imagePathDB
-                                  .toString()), // Assuming Constant.author2 contains the asset name
-                              fit: BoxFit.fill,
-                              width: 100,
-                              height: 100,
-                            ),
+                          : (imagePathDB != null && imagePathDB!.isNotEmpty)
+                              ? Image.file(
+                                  File(imagePathDB!),
+                                  fit: BoxFit.fill,
+                                  width: 100,
+                                  height: 100,
+                                )
+                              : Image.asset(
+                                  Constant
+                                      .author2, // Assuming Constant.author2 contains the asset name
+                                  fit: BoxFit.fill,
+                                  width: 100,
+                                  height: 100,
+                                ),
                     ),
                     const SizedBox(
                       height: 10,
@@ -201,7 +208,7 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                 isEnableSuggestion: true,
                 isObscureText: false,
                 maxLength: 10,
-
+                keywordType: TextInputType.phone,
                 controller: _phoneController,
                 // Assign the controller
               ),
@@ -215,26 +222,29 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                 width: MediaQuery.of(context).size.width * 1,
                 textColor: Colors.white,
                 onCLickButton: () async {
-                  await DBHelper.insertOrUpdateUserDataTable(
-                    _nameController.text,
-                    _emailController.text,
-                    _phoneController.text,
-                    imagePath.toString(),
-                  );
+                  if (isValidate(context, _nameController, _emailController,
+                      _phoneController)) {
+                    await DBHelper.insertOrUpdateUserDataTable(
+                      _nameController.text,
+                      _emailController.text,
+                      _phoneController.text,
+                      imagePath.toString(),
+                    );
 
-                  await DBHelper.insertOrUpdateAddressTable(
-                    _nameController.text,
-                    _emailController.text,
-                    _phoneController.text,
-                    '',
-                    '',
-                    '',
-                    '',
-                    '',
-                    '',
-                  );
+                    await DBHelper.insertOrUpdateAddressTable(
+                      _nameController.text,
+                      _emailController.text,
+                      _phoneController.text,
+                      '',
+                      '',
+                      '',
+                      '',
+                      '',
+                      '',
+                    );
 
-                  Utils.dialogUtils(context, 'Data Update Successfully');
+                    Utils.dialogUtils(context, 'Data Update Successfully');
+                  }
                 },
               )
             ],
@@ -243,4 +253,24 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
       ),
     );
   }
+}
+
+bool isValidate(
+  BuildContext context,
+  TextEditingController _fullName,
+  TextEditingController _email,
+  TextEditingController _phone,
+) {
+  if (_fullName.text.isEmpty) {
+    Utils.dialogUtils(context, 'Please Enter Full Name');
+    return false;
+  } else if (_email.text.isEmpty) {
+    Utils.dialogUtils(context, 'Please Enter Email Address');
+    return false;
+  } else if (_phone.text.isEmpty) {
+    Utils.dialogUtils(context, 'Please Enter Phone number');
+    return false;
+  }
+
+  return true;
 }
