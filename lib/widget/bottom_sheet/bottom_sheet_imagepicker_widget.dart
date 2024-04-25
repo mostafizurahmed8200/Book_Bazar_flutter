@@ -28,7 +28,7 @@ class _BottomSheetImagePickerWidgetState
   File? _selectedImage;
   String? imagePath;
 
-  Future<void> _pickImage() async {
+  /*Future<void> _pickImage() async {
     final ImagePicker picker = ImagePicker();
     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
     if (image != null) {
@@ -48,6 +48,26 @@ class _BottomSheetImagePickerWidgetState
         Navigator.pop(context);
       });
     }
+  }*/
+
+  Future<void> _pickImage(ImageSource source) async {
+    final ImagePicker picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: source);
+    if (image != null) {
+      setState(() {
+        _selectedImage = File(image.path);
+        imagePath = image.path;
+
+        if (widget.onImageSelected != null) {
+          widget.onImageSelected!(_selectedImage!); // Pass selected image
+        }
+
+        if (widget.imagePathString != null) {
+          widget.imagePathString!(imagePath!); // Pass selected image
+        }
+        Navigator.pop(context);
+      });
+    }
   }
 
   Future<void> _requestStoragePermission() async {
@@ -55,7 +75,7 @@ class _BottomSheetImagePickerWidgetState
 
     if (status.isGranted) {
       // Open the gallery to pick an image
-      await _pickImage();
+      await _pickImage(ImageSource.gallery);
     } else if (status.isDenied) {
       // Show a message to the user explaining why the permission is needed
       Utils.dialogUtils(context,
@@ -104,7 +124,17 @@ class _BottomSheetImagePickerWidgetState
               children: [
                 Expanded(
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () async {
+                      final status = await Permission.camera.request();
+                      if (status.isGranted) {
+                        await _pickImage(ImageSource.camera);
+                      } else if (status.isDenied) {
+                        Utils.dialogUtils(context,
+                            'Camera permission is required to take a picture.');
+                      } else if (status.isPermanentlyDenied) {
+                        openAppSettings();
+                      }
+                    },
                     child: Container(
                       height: 150,
                       decoration: BoxDecoration(

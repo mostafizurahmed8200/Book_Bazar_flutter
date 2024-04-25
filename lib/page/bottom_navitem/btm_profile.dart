@@ -7,6 +7,7 @@ import '../../constant/constant.dart';
 import '../../database/db_helper.dart';
 import '../../widget/appbar_widget.dart';
 import '../../widget/bottom_sheet/bottom_sheet_logout_widget.dart';
+import '../../widget/image_file_view_widget.dart';
 
 class BottomNavigationProfile extends StatefulWidget {
   const BottomNavigationProfile({super.key});
@@ -62,20 +63,35 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      ClipOval(
-                        child: imagePathDB != null
-                            ? Image.file(
-                                File(imagePathDB.toString()),
-                                fit: BoxFit.cover,
-                                width: 60,
-                                height: 60,
-                              )
-                            : Image.asset(
-                                Constant.author2,
-                                fit: BoxFit.cover,
-                                width: 60,
-                                height: 60,
-                              ),
+                      GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Dialog(
+                                child: ImageViewWidget(
+                                  imageFileName: imagePathDB.toString(),
+                                  imageName: Constant.author2,
+                                ),
+                              );
+                            },
+                          );
+                        },
+                        child: ClipOval(
+                          child: imagePathDB != null
+                              ? Image.file(
+                                  File(imagePathDB.toString()),
+                                  fit: BoxFit.cover,
+                                  width: 60,
+                                  height: 60,
+                                )
+                              : Image.asset(
+                                  Constant.author2,
+                                  fit: BoxFit.cover,
+                                  width: 60,
+                                  height: 60,
+                                ),
+                        ),
                       ),
                       const SizedBox(
                         width: 15,

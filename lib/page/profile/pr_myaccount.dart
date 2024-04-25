@@ -9,6 +9,7 @@ import '../../database/db_helper.dart';
 import '../../widget/appbar_widget.dart';
 import '../../widget/bottom_sheet/bottom_sheet_imagepicker_widget.dart';
 import '../../widget/editext_widget.dart';
+import '../../widget/image_file_view_widget.dart';
 
 class ProfileMyAccount extends StatefulWidget {
   File? selectedImage;
@@ -94,12 +95,11 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                           context: context,
                           builder: (BuildContext context) {
                             return Dialog(
-                              child: _buildImageView(
-                                context,
-                                widget.selectedImage != null
+                              child: ImageViewWidget(
+                                imageFileName: widget.selectedImage != null
                                     ? widget.selectedImage!.path
                                     : imagePathDB.toString(),
-                                Constant.author2,
+                                imageName: Constant.author2,
                               ),
                             );
                           },
@@ -300,22 +300,22 @@ bool isValidate(
   return true;
 }
 
-Widget _buildImageView(
-    BuildContext context, String imageFileName, String imageName) {
-  return ClipRRect(
-    borderRadius: BorderRadius.circular(20),
-    child: SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * .50,
-      child: (imageFileName.isNotEmpty)
-          ? Image.file(
-              File(imageFileName),
-              fit: BoxFit.fill,
-            )
-          : Image.asset(
-              imageName,
-              fit: BoxFit.fill,
-            ),
-    ),
-  );
-}
+// Widget _buildImageView(
+//     BuildContext context, String imageFileName, String imageName) {
+//   return ClipRRect(
+//     borderRadius: BorderRadius.circular(20),
+//     child: SizedBox(
+//       width: MediaQuery.of(context).size.width,
+//       height: MediaQuery.of(context).size.height * .50,
+//       child: (imageFileName.isNotEmpty)
+//           ? Image.file(
+//               File(imageFileName),
+//               fit: BoxFit.fill,
+//             )
+//           : Image.asset(
+//               imageName,
+//               fit: BoxFit.fill,
+//             ),
+//     ),
+//   );
+// }
