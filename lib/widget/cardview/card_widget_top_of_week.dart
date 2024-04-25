@@ -45,24 +45,33 @@ class CardWidgetTopOfWeek extends StatelessWidget {
                 child: Image.asset(
                   infoModel.bookCover,
                   fit: BoxFit.fill,
-                  height: 180,
+                  height: MediaQuery.of(context).size.height * .18,
                   width: 150,
                 ),
               ),
-              const SizedBox(
-                  height: 8), // Adding some space between the image and text
-              Text(
-                infoModel.bookName,
-                style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .01,
+              ), // Adding some space between the image and text
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .03,
+                child: Text(
+                  infoModel.bookName,
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w500),
+                ),
               ),
-              const SizedBox(height: 2),
-              Text(
-                infoModel.bookMoneyValue,
-                style: const TextStyle(
-                    fontSize: 15,
-                    color: Constant.appColor,
-                    fontWeight: FontWeight.w500),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .01,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .02,
+                child: Text(
+                  infoModel.bookMoneyValue,
+                  style: const TextStyle(
+                      fontSize: 15,
+                      color: Constant.appColor,
+                      fontWeight: FontWeight.w500),
+                ),
               ),
             ],
           ),

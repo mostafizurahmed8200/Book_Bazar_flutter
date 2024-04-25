@@ -69,11 +69,10 @@ class _BottomNavigationProfileState extends State<BottomNavigationProfile> {
                             context: context,
                             builder: (BuildContext context) {
                               return Dialog(
-                                child: ImageViewWidget(
-                                  imageFileName: imagePathDB.toString(),
-                                  imageName: Constant.author2,
-                                ),
-                              );
+                                  child: ImageViewWidget(
+                                imageFileName: imagePathDB.toString(),
+                                imageName: Constant.author2,
+                              ));
                             },
                           );
                         },

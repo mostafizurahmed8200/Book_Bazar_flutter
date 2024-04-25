@@ -72,6 +72,8 @@ class DBHelper {
   static Future<void> deleteLoginFlag() async {
     final Database db = await database();
     await db.delete(loginFlagTbl);
+    await db.delete(userDatatbl);
+    await db.delete(addresstbl);
   }
 
   //User Data--->
