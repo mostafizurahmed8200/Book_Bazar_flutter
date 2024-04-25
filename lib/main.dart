@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
           'bestVendorPage': (context) => const HomeBestVendorPage(),
           'topOfWeekPage': (context) => const HomeTopOfWeekPage(),
           'authorsPage': (context) => const HomeAuthorsPage(),
-          'profileMyAccount': (context) => const ProfileMyAccount(),
+          'profileMyAccount': (context) => ProfileMyAccount(null, ''),
           'profileAddressMain': (context) => const ProfileAddressMain(),
           'profileAddress': (context) => const ProfileAddress(),
           'profileOffer': (context) => const ProfileOfferPromo(),

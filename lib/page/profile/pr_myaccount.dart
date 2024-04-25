@@ -2,17 +2,19 @@ import 'dart:io';
 
 import 'package:book_bazar/widget/button_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 import '../../constant/constant.dart';
 import '../../constant/utils.dart';
 import '../../database/db_helper.dart';
 import '../../widget/appbar_widget.dart';
+import '../../widget/bottom_sheet/bottom_sheet_imagepicker_widget.dart';
 import '../../widget/editext_widget.dart';
 
 class ProfileMyAccount extends StatefulWidget {
-  const ProfileMyAccount({super.key});
+  File? selectedImage;
+  String? imagePath;
+
+  ProfileMyAccount(this.selectedImage, this.imagePath, {super.key});
 
   @override
   State<ProfileMyAccount> createState() => _ProfileMyAccountState();
@@ -22,38 +24,8 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
   late TextEditingController _nameController;
   late TextEditingController _emailController;
   late TextEditingController _phoneController;
-  File? _selectedImage;
-  String? imagePath;
+
   String? imagePathDB;
-
-  Future<void> _pickImage() async {
-    final ImagePicker picker = ImagePicker();
-    final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      setState(() {
-        _selectedImage = File(image.path);
-        imagePath = image.path;
-        print('ImagePathFile-- $_selectedImage');
-        print('ImagePath-- ${imagePath}');
-      });
-    }
-  }
-
-  Future<void> _requestStoragePermission() async {
-    final status = await Permission.storage.request();
-
-    if (status.isGranted) {
-      // Open the gallery to pick an image
-      await _pickImage();
-    } else if (status.isDenied) {
-      // Show a message to the user explaining why the permission is needed
-      Utils.dialogUtils(context,
-          'Storage permission is required to change your profile picture.');
-    } else if (status.isPermanentlyDenied) {
-      // Open the app settings so the user can manually grant the permission
-      openAppSettings();
-    }
-  }
 
   @override
   void initState() {
@@ -116,35 +88,65 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ClipOval(
-                      child: _selectedImage != null
-                          ? Image.file(
-                              _selectedImage!,
-                              fit: BoxFit.fill,
-                              width: 100,
-                              height: 100,
-                            )
-                          : (imagePathDB != null && imagePathDB!.isNotEmpty)
-                              ? Image.file(
-                                  File(imagePathDB!),
-                                  fit: BoxFit.fill,
-                                  width: 100,
-                                  height: 100,
-                                )
-                              : Image.asset(
-                                  Constant
-                                      .author2, // Assuming Constant.author2 contains the asset name
-                                  fit: BoxFit.fill,
-                                  width: 100,
-                                  height: 100,
-                                ),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Dialog(
+                              child: _buildImageView(
+                                context,
+                                imagePathDB.toString(),
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      child: ClipOval(
+                        child: widget.selectedImage != null
+                            ? Image.file(
+                                widget.selectedImage!,
+                                fit: BoxFit.fill,
+                                width: 100,
+                                height: 100,
+                              )
+                            : (imagePathDB != null && imagePathDB!.isNotEmpty)
+                                ? Image.file(
+                                    File(imagePathDB!),
+                                    fit: BoxFit.fill,
+                                    width: 100,
+                                    height: 100,
+                                  )
+                                : Image.asset(
+                                    Constant.author2,
+                                    // Assuming Constant.author2 contains the asset name
+                                    fit: BoxFit.fill,
+                                    width: 100,
+                                    height: 100,
+                                  ),
+                      ),
                     ),
                     const SizedBox(
                       height: 10,
                     ),
                     GestureDetector(
-                      onTap: () async {
-                        await _requestStoragePermission();
+                      onTap: () /*async*/ {
+                        // await _requestStoragePermission();
+
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          backgroundColor: Colors.white,
+                          shape: const RoundedRectangleBorder(
+                            // <-- SEE HERE
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(25.0),
+                            ),
+                          ),
+                          builder: (BuildContext context) {
+                            return const BottomSheetImagePickerWidget(); // Display the bottom sheet
+                          },
+                        );
                       },
                       child: Text(
                         'Change Profile',
@@ -228,7 +230,7 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                       _nameController.text,
                       _emailController.text,
                       _phoneController.text,
-                      imagePath.toString(),
+                      widget.imagePath.toString(),
                     );
 
                     await DBHelper.insertOrUpdateAddressTable(
@@ -273,4 +275,18 @@ bool isValidate(
   }
 
   return true;
+}
+
+Widget _buildImageView(BuildContext context, String imageFileName) {
+  return ClipRRect(
+    borderRadius: BorderRadius.circular(20),
+    child: SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height * .50,
+      child: Image.file(
+        File(imageFileName),
+        fit: BoxFit.fill,
+      ),
+    ),
+  );
 }

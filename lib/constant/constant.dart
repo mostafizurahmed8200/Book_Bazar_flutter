@@ -70,6 +70,8 @@ class Constant {
   static const icon_review = 'image/review_icon.svg';
   static const icon_minus = 'image/minus_icon.svg';
   static const icon_plus = 'image/plus_icon.svg';
+  static const icon_camera = 'image/ic_camera.png';
+  static const icon_gallery = 'image/ic_photo.png';
 
   //extra
   static const bottomSheetBarBg = 'image/btm_sheet_bar.svg';
