@@ -99,6 +99,7 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                                 widget.selectedImage != null
                                     ? widget.selectedImage!.path
                                     : imagePathDB.toString(),
+                                Constant.author2,
                               ),
                             );
                           },
@@ -147,14 +148,16 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                           ),
                           builder: (BuildContext context) {
                             return BottomSheetImagePickerWidget(
+                              imagePathString: (String image) {
+                                widget.imagePath =
+                                    image.toString(); // Receive selected image
+                              },
                               onImageSelected: (File selectedImage) {
                                 setState(() {
-                                  widget.selectedImage =
-                                      selectedImage; // Receive selected image
+                                  widget.selectedImage = selectedImage;
                                 });
                               },
                             );
-                            ; // Display the bottom sheet
                           },
                         );
                       },
@@ -228,37 +231,47 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                 height: 20,
               ),
               ButtonWidget(
-                text: 'Update Profile',
-                roundCorner: 30,
-                backgroundColor: Constant.appColor,
-                width: MediaQuery.of(context).size.width * 1,
-                textColor: Colors.white,
-                onCLickButton: () async {
-                  if (isValidate(context, _nameController, _emailController,
-                      _phoneController)) {
-                    await DBHelper.insertOrUpdateUserDataTable(
-                      _nameController.text,
-                      _emailController.text,
-                      _phoneController.text,
-                      widget.imagePath.toString(),
-                    );
+                  text: 'Update Profile',
+                  roundCorner: 30,
+                  backgroundColor: Constant.appColor,
+                  width: MediaQuery.of(context).size.width * 1,
+                  textColor: Colors.white,
+                  onCLickButton: () async {
+                    if (isValidate(context, _nameController, _emailController,
+                        _phoneController)) {
+                      // Check if a new image is selected
+                      if (widget.selectedImage != null) {
+                        await DBHelper.insertOrUpdateUserDataTable(
+                          _nameController.text,
+                          _emailController.text,
+                          _phoneController.text,
+                          widget.imagePath.toString(),
+                        );
+                      } else {
+                        // If no new image is selected, use the existing image path
+                        await DBHelper.insertOrUpdateUserDataTable(
+                          _nameController.text,
+                          _emailController.text,
+                          _phoneController.text,
+                          imagePathDB.toString(), // Use existing image path
+                        );
+                      }
 
-                    await DBHelper.insertOrUpdateAddressTable(
-                      _nameController.text,
-                      _emailController.text,
-                      _phoneController.text,
-                      '',
-                      '',
-                      '',
-                      '',
-                      '',
-                      '',
-                    );
+                      await DBHelper.insertOrUpdateAddressTable(
+                        _nameController.text,
+                        _emailController.text,
+                        _phoneController.text,
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                        '',
+                      );
 
-                    Utils.dialogUtils(context, 'Data Update Successfully');
-                  }
-                },
-              )
+                      Utils.dialogUtils(context, 'Data Update Successfully');
+                    }
+                  })
             ],
           ),
         ),
@@ -287,16 +300,22 @@ bool isValidate(
   return true;
 }
 
-Widget _buildImageView(BuildContext context, String imageFileName) {
+Widget _buildImageView(
+    BuildContext context, String imageFileName, String imageName) {
   return ClipRRect(
     borderRadius: BorderRadius.circular(20),
     child: SizedBox(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * .50,
-      child: Image.file(
-        File(imageFileName),
-        fit: BoxFit.fill,
-      ),
+      child: (imageFileName.isNotEmpty)
+          ? Image.file(
+              File(imageFileName),
+              fit: BoxFit.fill,
+            )
+          : Image.asset(
+              imageName,
+              fit: BoxFit.fill,
+            ),
     ),
   );
 }

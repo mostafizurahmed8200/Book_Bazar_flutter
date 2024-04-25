@@ -10,11 +10,13 @@ import '../../constant/utils.dart';
 
 class BottomSheetImagePickerWidget extends StatefulWidget {
   final Function(File)? onImageSelected; // Define callback function
+  final Function(String)? imagePathString; // Define callback function
 
   const BottomSheetImagePickerWidget({
-    Key? key,
+    super.key,
     this.onImageSelected,
-  }) : super(key: key);
+    this.imagePathString,
+  });
 
   @override
   State<BottomSheetImagePickerWidget> createState() =>
@@ -33,10 +35,15 @@ class _BottomSheetImagePickerWidgetState
       setState(() {
         _selectedImage = File(image.path);
         imagePath = image.path;
+
         print('ImagePathFile-- $_selectedImage');
         print('ImagePath-- ${imagePath}');
         if (widget.onImageSelected != null) {
           widget.onImageSelected!(_selectedImage!); // Pass selected image
+        }
+
+        if (widget.imagePathString != null) {
+          widget.imagePathString!(imagePath!); // Pass selected image
         }
         Navigator.pop(context);
       });
