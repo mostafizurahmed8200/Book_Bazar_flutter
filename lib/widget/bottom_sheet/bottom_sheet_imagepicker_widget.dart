@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:book_bazar/constant/constant.dart';
-import 'package:book_bazar/page/profile/pr_myaccount.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
@@ -10,9 +9,12 @@ import 'package:permission_handler/permission_handler.dart';
 import '../../constant/utils.dart';
 
 class BottomSheetImagePickerWidget extends StatefulWidget {
+  final Function(File)? onImageSelected; // Define callback function
+
   const BottomSheetImagePickerWidget({
-    super.key,
-  });
+    Key? key,
+    this.onImageSelected,
+  }) : super(key: key);
 
   @override
   State<BottomSheetImagePickerWidget> createState() =>
@@ -33,12 +35,10 @@ class _BottomSheetImagePickerWidgetState
         imagePath = image.path;
         print('ImagePathFile-- $_selectedImage');
         print('ImagePath-- ${imagePath}');
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => ProfileMyAccount(_selectedImage, imagePath),
-          ),
-        );
+        if (widget.onImageSelected != null) {
+          widget.onImageSelected!(_selectedImage!); // Pass selected image
+        }
+        Navigator.pop(context);
       });
     }
   }

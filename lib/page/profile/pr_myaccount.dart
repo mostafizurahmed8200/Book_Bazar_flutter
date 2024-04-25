@@ -96,7 +96,9 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                             return Dialog(
                               child: _buildImageView(
                                 context,
-                                imagePathDB.toString(),
+                                widget.selectedImage != null
+                                    ? widget.selectedImage!.path
+                                    : imagePathDB.toString(),
                               ),
                             );
                           },
@@ -144,7 +146,15 @@ class _ProfileMyAccountState extends State<ProfileMyAccount> {
                             ),
                           ),
                           builder: (BuildContext context) {
-                            return const BottomSheetImagePickerWidget(); // Display the bottom sheet
+                            return BottomSheetImagePickerWidget(
+                              onImageSelected: (File selectedImage) {
+                                setState(() {
+                                  widget.selectedImage =
+                                      selectedImage; // Receive selected image
+                                });
+                              },
+                            );
+                            ; // Display the bottom sheet
                           },
                         );
                       },
